@@ -1,0 +1,12 @@
+Z:/shellhack/build/CMakeFiles/ALL_BUILD.dir
+Z:/shellhack/build/CMakeFiles/ZERO_CHECK.dir
+Z:/shellhack/build/engine/CMakeFiles/engine.dir
+Z:/shellhack/build/platform/CMakeFiles/platform_runner.dir
+Z:/shellhack/build/platform/win32/CMakeFiles/win32_graphics.dir
+Z:/shellhack/build/platform/win32/CMakeFiles/win32_sound.dir
+Z:/shellhack/build/platform/win32/CMakeFiles/win32_input.dir
+Z:/shellhack/build/platform/win32/CMakeFiles/win32_memory.dir
+Z:/shellhack/build/platform/win32/CMakeFiles/win32_os.dir
+Z:/shellhack/build/platform/win32/CMakeFiles/win32_hotload.dir
+Z:/shellhack/build/platform/win32/CMakeFiles/win32_stopwatch.dir
+Z:/shellhack/build/platform/win32/CMakeFiles/win32_main.dir

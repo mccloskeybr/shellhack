@@ -32,3 +32,11 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for each subdirectory.
+  include("Z:/shellhack/build/engine/memory/cmake_install.cmake")
+  include("Z:/shellhack/build/engine/render/cmake_install.cmake")
+  include("Z:/shellhack/build/engine/world/cmake_install.cmake")
+
+endif()
+

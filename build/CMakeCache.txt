@@ -195,13 +195,16 @@ Shell_Hack_IS_TOP_LEVEL:STATIC=ON
 Shell_Hack_SOURCE_DIR:STATIC=Z:/shellhack/src
 
 //Dependencies for the target
-engine_LIB_DEPENDS:STATIC=general;platform_runner;
+component_hash_LIB_DEPENDS:STATIC=general;memory;
 
 //Dependencies for the target
-platform_main_LIB_DEPENDS:STATIC=general;win32_graphics;general;win32_sound;general;win32_input;general;win32_hotload;general;win32_os;general;win32_stopwatch;
+engine_LIB_DEPENDS:STATIC=general;platform_runner;general;world;general;render;general;gizmos;general;log;
 
 //Dependencies for the target
-platform_runner_LIB_DEPENDS:STATIC=general;win32_graphics;general;win32_sound;general;win32_input;general;win32_memory;general;win32_hotload;general;win32_os;general;win32_stopwatch;
+platform_runner_LIB_DEPENDS:STATIC=general;log;general;win32_graphics;general;win32_sound;general;win32_input;general;win32_hotload;general;win32_os;general;win32_stopwatch;
+
+//Dependencies for the target
+render_LIB_DEPENDS:STATIC=general;world;general;component_hash;
 
 //Dependencies for the target
 win32_graphics_LIB_DEPENDS:STATIC=general;platform_runner;
@@ -210,16 +213,13 @@ win32_graphics_LIB_DEPENDS:STATIC=general;platform_runner;
 win32_input_LIB_DEPENDS:STATIC=general;platform_runner;
 
 //Dependencies for the target
-win32_memory_LIB_DEPENDS:STATIC=general;platform_runner;
-
-//Dependencies for the target
 win32_os_LIB_DEPENDS:STATIC=general;platform_runner;
 
 //Dependencies for the target
-win32_sound_LIB_DEPENDS:STATIC=general;platform_runner;
+win32_sound_LIB_DEPENDS:STATIC=general;platform_runner;general;log;
 
 //Dependencies for the target
-win32_window_LIB_DEPENDS:STATIC=general;platform_main;
+world_LIB_DEPENDS:STATIC=general;memory;general;log;
 
 
 ########################
@@ -233,9 +233,9 @@ CMAKE_CACHEFILE_DIR:INTERNAL=z:/shellhack/build
 //Major version of cmake used to create the current loaded cache
 CMAKE_CACHE_MAJOR_VERSION:INTERNAL=3
 //Minor version of cmake used to create the current loaded cache
-CMAKE_CACHE_MINOR_VERSION:INTERNAL=29
+CMAKE_CACHE_MINOR_VERSION:INTERNAL=28
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=0
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=3
 //Path to CMake executable.
 CMAKE_COMMAND:INTERNAL=C:/Program Files/CMake/bin/cmake.exe
 //Path to cpack program executable.
@@ -306,7 +306,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MT
 CMAKE_MT-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=9
 //Platform information initialized
 CMAKE_PLATFORM_INFO_INITIALIZED:INTERNAL=1
 //noop for ranlib
@@ -325,7 +325,7 @@ CMAKE_RC_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_RC_FLAGS_RELWITHDEBINFO
 CMAKE_RC_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //Path to CMake installation.
-CMAKE_ROOT:INTERNAL=C:/Program Files/CMake/share/cmake-3.29
+CMAKE_ROOT:INTERNAL=C:/Program Files/CMake/share/cmake-3.28
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS
 CMAKE_SHARED_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_DEBUG

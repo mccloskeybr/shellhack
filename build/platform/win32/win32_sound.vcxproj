@@ -269,7 +269,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Z:\shellhack\src\platform\win32\win32_sound.cpp" />
+    <ClCompile Include="Z:\shellhack\src\platform\win32\win32_sound.cc" />
     <ClInclude Include="Z:\shellhack\src\platform\platform_sound.h" />
   </ItemGroup>
   <ItemGroup>

@@ -269,7 +269,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Z:\shellhack\src\platform\win32\win32_hotload.cpp" />
+    <ClCompile Include="Z:\shellhack\src\platform\win32\win32_hotload.cc" />
     <ClInclude Include="Z:\shellhack\src\platform\platform_hotload.h" />
   </ItemGroup>
   <ItemGroup>

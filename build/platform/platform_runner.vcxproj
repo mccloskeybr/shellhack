@@ -270,7 +270,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Z:\shellhack\src\platform\platform_runner.h" />
-    <ClCompile Include="Z:\shellhack\src\platform\platform_runner.cpp" />
+    <ClCompile Include="Z:\shellhack\src\platform\platform_runner.cc" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Z:\shellhack\build\platform\win32\win32_graphics.vcxproj">

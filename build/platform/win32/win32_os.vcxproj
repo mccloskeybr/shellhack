@@ -269,7 +269,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Z:\shellhack\src\platform\win32\win32_os.cpp" />
+    <ClCompile Include="Z:\shellhack\src\platform\win32\win32_os.cc" />
     <ClInclude Include="Z:\shellhack\src\platform\platform_os.h" />
   </ItemGroup>
   <ItemGroup>
@@ -278,6 +278,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="Z:\shellhack\build\common\log.vcxproj">
+      <Project>{7CBC88C1-5B59-321F-8076-6619AA0A7880}</Project>
+      <Name>log</Name>
     </ProjectReference>
     <ProjectReference Include="Z:\shellhack\build\platform\win32\win32_hotload.vcxproj">
       <Project>{58CB4E88-A300-3BD7-9D90-1FB606F869E6}</Project>

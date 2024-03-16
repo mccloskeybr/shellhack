@@ -269,7 +269,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Z:\shellhack\src\platform\win32\win32_stopwatch.cpp" />
+    <ClCompile Include="Z:\shellhack\src\platform\win32\win32_stopwatch.cc" />
     <ClInclude Include="Z:\shellhack\src\platform\platform_stopwatch.h" />
   </ItemGroup>
   <ItemGroup>

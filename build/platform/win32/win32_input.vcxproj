@@ -269,13 +269,13 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Z:\shellhack\src\platform\win32\win32_input.cpp" />
+    <ClCompile Include="Z:\shellhack\src\platform\win32\win32_input.cc" />
     <ClInclude Include="Z:\shellhack\src\platform\platform_input.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Z:\shellhack\build\platform\win32\win32_memory.vcxproj">
-      <Project>{ABABF2E1-07DE-3DC4-B819-F13BFCC79E88}</Project>
-      <Name>win32_memory</Name>
+    <ProjectReference Include="Z:\shellhack\build\platform\win32\win32_os.vcxproj">
+      <Project>{4966F9FA-5BD9-3723-BBED-187970C32021}</Project>
+      <Name>win32_os</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

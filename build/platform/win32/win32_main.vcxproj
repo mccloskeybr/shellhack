@@ -113,7 +113,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\Debug\platform_runner.lib;Debug\win32_graphics.lib;Debug\win32_sound.lib;Debug\win32_input.lib;Debug\win32_memory.lib;Debug\win32_os.lib;..\Debug\platform_runner.lib;Debug\win32_graphics.lib;Debug\win32_sound.lib;Debug\win32_input.lib;Debug\win32_memory.lib;Debug\win32_os.lib;Debug\win32_hotload.lib;Debug\win32_stopwatch.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\Debug\platform_runner.lib;Debug\win32_graphics.lib;Debug\win32_sound.lib;Debug\win32_input.lib;Debug\win32_os.lib;..\Debug\platform_runner.lib;Debug\win32_graphics.lib;Debug\win32_sound.lib;Debug\win32_input.lib;Debug\win32_os.lib;Debug\win32_hotload.lib;Debug\win32_stopwatch.lib;..\..\common\Debug\log.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -158,7 +158,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\Release\platform_runner.lib;Release\win32_graphics.lib;Release\win32_sound.lib;Release\win32_input.lib;Release\win32_memory.lib;Release\win32_os.lib;..\Release\platform_runner.lib;Release\win32_graphics.lib;Release\win32_sound.lib;Release\win32_input.lib;Release\win32_memory.lib;Release\win32_os.lib;Release\win32_hotload.lib;Release\win32_stopwatch.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\Release\platform_runner.lib;Release\win32_graphics.lib;Release\win32_sound.lib;Release\win32_input.lib;Release\win32_os.lib;..\Release\platform_runner.lib;Release\win32_graphics.lib;Release\win32_sound.lib;Release\win32_input.lib;Release\win32_os.lib;Release\win32_hotload.lib;Release\win32_stopwatch.lib;..\..\common\Release\log.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -203,7 +203,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\MinSizeRel\platform_runner.lib;MinSizeRel\win32_graphics.lib;MinSizeRel\win32_sound.lib;MinSizeRel\win32_input.lib;MinSizeRel\win32_memory.lib;MinSizeRel\win32_os.lib;..\MinSizeRel\platform_runner.lib;MinSizeRel\win32_graphics.lib;MinSizeRel\win32_sound.lib;MinSizeRel\win32_input.lib;MinSizeRel\win32_memory.lib;MinSizeRel\win32_os.lib;MinSizeRel\win32_hotload.lib;MinSizeRel\win32_stopwatch.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\MinSizeRel\platform_runner.lib;MinSizeRel\win32_graphics.lib;MinSizeRel\win32_sound.lib;MinSizeRel\win32_input.lib;MinSizeRel\win32_os.lib;..\MinSizeRel\platform_runner.lib;MinSizeRel\win32_graphics.lib;MinSizeRel\win32_sound.lib;MinSizeRel\win32_input.lib;MinSizeRel\win32_os.lib;MinSizeRel\win32_hotload.lib;MinSizeRel\win32_stopwatch.lib;..\..\common\MinSizeRel\log.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -247,7 +247,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\RelWithDebInfo\platform_runner.lib;RelWithDebInfo\win32_graphics.lib;RelWithDebInfo\win32_sound.lib;RelWithDebInfo\win32_input.lib;RelWithDebInfo\win32_memory.lib;RelWithDebInfo\win32_os.lib;..\RelWithDebInfo\platform_runner.lib;RelWithDebInfo\win32_graphics.lib;RelWithDebInfo\win32_sound.lib;RelWithDebInfo\win32_input.lib;RelWithDebInfo\win32_memory.lib;RelWithDebInfo\win32_os.lib;RelWithDebInfo\win32_hotload.lib;RelWithDebInfo\win32_stopwatch.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\RelWithDebInfo\platform_runner.lib;RelWithDebInfo\win32_graphics.lib;RelWithDebInfo\win32_sound.lib;RelWithDebInfo\win32_input.lib;RelWithDebInfo\win32_os.lib;..\RelWithDebInfo\platform_runner.lib;RelWithDebInfo\win32_graphics.lib;RelWithDebInfo\win32_sound.lib;RelWithDebInfo\win32_input.lib;RelWithDebInfo\win32_os.lib;RelWithDebInfo\win32_hotload.lib;RelWithDebInfo\win32_stopwatch.lib;..\..\common\RelWithDebInfo\log.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -317,7 +317,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Z:\shellhack\src\platform\win32\win32_main.cpp" />
+    <ClCompile Include="Z:\shellhack\src\platform\win32\win32_main.cc" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Z:\shellhack\build\ZERO_CHECK.vcxproj">
@@ -325,6 +325,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="Z:\shellhack\build\common\log.vcxproj">
+      <Project>{7CBC88C1-5B59-321F-8076-6619AA0A7880}</Project>
+      <Name>log</Name>
     </ProjectReference>
     <ProjectReference Include="Z:\shellhack\build\platform\platform_runner.vcxproj">
       <Project>{12E6D2BD-7C94-3D4E-99C7-79FCADB3E830}</Project>

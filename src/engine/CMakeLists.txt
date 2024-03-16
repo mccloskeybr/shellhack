@@ -1,6 +1,15 @@
-add_library(engine SHARED engine.h engine.cpp)
+include_directories(.)
+add_subdirectory(memory)
+add_subdirectory(render)
+add_subdirectory(world)
+
+add_library(engine SHARED engine.h engine.cc)
 target_link_libraries(engine PRIVATE
 	platform_runner
+	world
+	render
+	gizmos
+	log
 )
 
 generate_export_header(engine

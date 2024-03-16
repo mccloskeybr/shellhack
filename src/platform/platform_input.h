@@ -2,17 +2,16 @@
 #define PLATFORM_INPUT
 
 #include <common/status.h>
-#include <platform/platform_runner.h>
+#include <engine/input/input.h>
 
 struct Platform_InputDevice;
 
 Status
-Platform_CreateInputDevice(
-	Platform_InputDevice** device);
+Platform_CreateInputDevice(Platform_InputDevice** device);
 
 void
 Platform_UpdateControllerStates(
-	const Platform_InputDevice* const device,
-	InputControllers* input_controllers);
+    const Platform_InputDevice* const device,
+    Input* input);
 
 #endif

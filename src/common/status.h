@@ -9,28 +9,20 @@
 
 #if DEBUG
 // allows input of _STATUS in debugger on assertion failure to see the val.
-#define ASSERT_OK(expression) 					\
-		{ 						\
+#define ASSERT_OK(expression) 					    \
+		{ 						                          \
 			const Status _STATUS = (expression); 	\
-			ASSERT(_STATUS == OK) 			\
+			ASSERT(_STATUS == OK) 			          \
 		}
 #else
 #define ASSERT_OK(expression)
 #endif
 
-#if DEBUG
-#define ASSERT_MAX_TRANSIENT(expression) 			\
-		{ 						\
-			const Status _STATUS = (expression); 	\
-			ASSERT(_STATUS == FAILED_PRECONDITION) 	\
-		}
-#else
-#define ASSERT_OK(expression)
-#endif
+#define UNREACHABLE *(int*)0 = 0;
 
-#define RETURN_IF_ERROR(expression) 				\
-		{ 						\
-			const Status _STATUS = (expression);	\
+#define RETURN_IF_ERROR(expression) 				  \
+		{ 						                            \
+			const Status _STATUS = (expression);	  \
 			if (_STATUS != OK) { return _STATUS; } 	\
 		}
 

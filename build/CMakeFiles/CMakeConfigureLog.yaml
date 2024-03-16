@@ -4,16 +4,16 @@ events:
   -
     kind: "message-v1"
     backtrace:
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineSystem.cmake:233 (message)"
       - "CMakeLists.txt:2 (project)"
     message: |
       The system is: Windows - 10.0.22621 - AMD64
   -
     kind: "message-v1"
     backtrace:
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
       - "CMakeLists.txt:2 (project)"
     message: |
       Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
@@ -26,8 +26,8 @@ events:
       Microsoft (R) Build Engine version 15.9.21+g9802d43bc3 for .NET Framework
       Copyright (C) Microsoft Corporation. All rights reserved.
       
-      Build started 3/10/2024 5:30:20 PM.
-      Project "Z:\\shellhack\\build\\CMakeFiles\\3.29.0-rc2\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
+      Build started 3/12/2024 11:30:15 PM.
+      Project "Z:\\shellhack\\build\\CMakeFiles\\3.28.3\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
       PrepareForBuild:
         Creating directory "Debug\\".
         Creating directory "Debug\\CompilerIdC.tlog\\".
@@ -38,7 +38,7 @@ events:
         CMakeCCompilerId.c
       Link:
         C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X86 /SAFESEH Debug\\CMakeCCompilerId.obj
-        CompilerIdC.vcxproj -> Z:\\shellhack\\build\\CMakeFiles\\3.29.0-rc2\\CompilerIdC\\.\\CompilerIdC.exe
+        CompilerIdC.vcxproj -> Z:\\shellhack\\build\\CMakeFiles\\3.28.3\\CompilerIdC\\.\\CompilerIdC.exe
       PostBuildEvent:
         for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
         :VCEnd
@@ -46,13 +46,13 @@ events:
       FinalizeBuildStatus:
         Deleting file "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
         Touching "Debug\\CompilerIdC.tlog\\CompilerIdC.lastbuildstate".
-      Done Building Project "Z:\\shellhack\\build\\CMakeFiles\\3.29.0-rc2\\CompilerIdC\\CompilerIdC.vcxproj" (default targets).
+      Done Building Project "Z:\\shellhack\\build\\CMakeFiles\\3.28.3\\CompilerIdC\\CompilerIdC.vcxproj" (default targets).
       
       Build succeeded.
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.33
+      Time Elapsed 00:00:00.68
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -60,14 +60,14 @@ events:
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
       
       The C compiler identification is MSVC, found in:
-        Z:/shellhack/build/CMakeFiles/3.29.0-rc2/CompilerIdC/CompilerIdC.exe
+        Z:/shellhack/build/CMakeFiles/3.28.3/CompilerIdC/CompilerIdC.exe
       
   -
     kind: "message-v1"
     backtrace:
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
       - "CMakeLists.txt:2 (project)"
     message: |
       Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
@@ -80,8 +80,8 @@ events:
       Microsoft (R) Build Engine version 15.9.21+g9802d43bc3 for .NET Framework
       Copyright (C) Microsoft Corporation. All rights reserved.
       
-      Build started 3/10/2024 5:30:20 PM.
-      Project "Z:\\shellhack\\build\\CMakeFiles\\3.29.0-rc2\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
+      Build started 3/12/2024 11:30:16 PM.
+      Project "Z:\\shellhack\\build\\CMakeFiles\\3.28.3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
         Creating directory "Debug\\".
         Creating directory "Debug\\CompilerIdCXX.tlog\\".
@@ -92,7 +92,7 @@ events:
         CMakeCXXCompilerId.cpp
       Link:
         C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X86 /SAFESEH Debug\\CMakeCXXCompilerId.obj
-        CompilerIdCXX.vcxproj -> Z:\\shellhack\\build\\CMakeFiles\\3.29.0-rc2\\CompilerIdCXX\\.\\CompilerIdCXX.exe
+        CompilerIdCXX.vcxproj -> Z:\\shellhack\\build\\CMakeFiles\\3.28.3\\CompilerIdCXX\\.\\CompilerIdCXX.exe
       PostBuildEvent:
         for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
         :VCEnd
@@ -100,13 +100,13 @@ events:
       FinalizeBuildStatus:
         Deleting file "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
         Touching "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate".
-      Done Building Project "Z:\\shellhack\\build\\CMakeFiles\\3.29.0-rc2\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (default targets).
+      Done Building Project "Z:\\shellhack\\build\\CMakeFiles\\3.28.3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (default targets).
       
       Build succeeded.
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.25
+      Time Elapsed 00:00:00.61
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -114,19 +114,19 @@ events:
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
       
       The CXX compiler identification is MSVC, found in:
-        Z:/shellhack/build/CMakeFiles/3.29.0-rc2/CompilerIdCXX/CompilerIdCXX.exe
+        Z:/shellhack/build/CMakeFiles/3.28.3/CompilerIdCXX/CompilerIdCXX.exe
       
   -
     kind: "try_compile-v1"
     backtrace:
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:64 (try_compile)"
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "CMakeLists.txt:2 (project)"
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-j6kt8z"
-      binary: "Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-j6kt8z"
+      source: "Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-pf7ki5"
+      binary: "Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-pf7ki5"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
       CMAKE_EXE_LINKER_FLAGS: "/machine:X86"
@@ -134,82 +134,54 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-j6kt8z'
+        Change Dir: 'Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-pf7ki5'
         
-        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/MSBuild/15.0/Bin/MSBuild.exe" cmTC_d4f92.vcxproj /p:Configuration=Debug /p:Platform=Win32 /p:VisualStudioVersion=15.0 /v:n
+        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/MSBuild/15.0/Bin/MSBuild.exe" cmTC_9657a.vcxproj /p:Configuration=Debug /p:Platform=Win32 /p:VisualStudioVersion=15.0 /v:n
         Microsoft (R) Build Engine version 15.9.21+g9802d43bc3 for .NET Framework
         Copyright (C) Microsoft Corporation. All rights reserved.
         
-        Build started 3/10/2024 5:30:23 PM.
-        Project "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-j6kt8z\\cmTC_d4f92.vcxproj" on node 1 (default targets).
+        Build started 3/12/2024 11:30:17 PM.
+        Project "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-pf7ki5\\cmTC_9657a.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_d4f92.dir\\Debug\\".
-          Creating directory "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-j6kt8z\\Debug\\".
-          Creating directory "cmTC_d4f92.dir\\Debug\\cmTC_d4f92.tlog\\".
+          Creating directory "cmTC_9657a.dir\\Debug\\".
+          Creating directory "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-pf7ki5\\Debug\\".
+          Creating directory "cmTC_9657a.dir\\Debug\\cmTC_9657a.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_d4f92.dir\\Debug\\cmTC_d4f92.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Creating "cmTC_9657a.dir\\Debug\\cmTC_9657a.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
         ClCompile:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x86\\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d4f92.dir\\Debug\\\\" /Fd"cmTC_d4f92.dir\\Debug\\vc141.pdb" /Gd /TC /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.29\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x86\\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_9657a.dir\\Debug\\\\" /Fd"cmTC_9657a.dir\\Debug\\vc141.pdb" /Gd /TC /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.16.27051 for x86
           Copyright (C) Microsoft Corporation.  All rights reserved.
           
-          cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d4f92.dir\\Debug\\\\" /Fd"cmTC_d4f92.dir\\Debug\\vc141.pdb" /Gd /TC /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.29\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
+          cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_9657a.dir\\Debug\\\\" /Fd"cmTC_9657a.dir\\Debug\\vc141.pdb" /Gd /TC /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
           
         Link:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:"Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-j6kt8z\\Debug\\cmTC_d4f92.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-j6kt8z/Debug/cmTC_d4f92.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-j6kt8z/Debug/cmTC_d4f92.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_d4f92.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_d4f92.vcxproj -> Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-j6kt8z\\Debug\\cmTC_d4f92.exe
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:"Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-pf7ki5\\Debug\\cmTC_9657a.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-pf7ki5/Debug/cmTC_9657a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-pf7ki5/Debug/cmTC_9657a.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_9657a.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_9657a.vcxproj -> Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-pf7ki5\\Debug\\cmTC_9657a.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_d4f92.dir\\Debug\\cmTC_d4f92.tlog\\unsuccessfulbuild".
-          Touching "cmTC_d4f92.dir\\Debug\\cmTC_d4f92.tlog\\cmTC_d4f92.lastbuildstate".
-        Done Building Project "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-j6kt8z\\cmTC_d4f92.vcxproj" (default targets).
+          Deleting file "cmTC_9657a.dir\\Debug\\cmTC_9657a.tlog\\unsuccessfulbuild".
+          Touching "cmTC_9657a.dir\\Debug\\cmTC_9657a.tlog\\cmTC_9657a.lastbuildstate".
+        Done Building Project "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-pf7ki5\\cmTC_9657a.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.56
+        Time Elapsed 00:00:00.92
         
       exitCode: 0
   -
-    kind: "message-v1"
-    backtrace:
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:170 (message)"
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
-    message: |
-      Parsed C implicit link information:
-        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
-        linker tool for 'C': C:/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/VC/Tools/MSVC/14.16.27023/bin/HostX86/x86/link.exe
-        implicit libs: []
-        implicit objs: []
-        implicit dirs: []
-        implicit fwks: []
-      
-      
-  -
-    kind: "message-v1"
-    backtrace:
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:207 (cmake_determine_linker_id)"
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
-    message: |
-      Running the C compiler's linker: "C:/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/VC/Tools/MSVC/14.16.27023/bin/HostX86/x86/link.exe" "-v"
-      Microsoft (R) Incremental Linker Version 14.16.27051.0
-      Copyright (C) Microsoft Corporation.  All rights reserved.
-  -
     kind: "try_compile-v1"
     backtrace:
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:64 (try_compile)"
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "CMakeLists.txt:2 (project)"
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-i4s4d8"
-      binary: "Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-i4s4d8"
+      source: "Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-yum0pa"
+      binary: "Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-yum0pa"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
       CMAKE_EXE_LINKER_FLAGS: "/machine:X86"
@@ -217,89 +189,57 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-i4s4d8'
+        Change Dir: 'Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-yum0pa'
         
-        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/MSBuild/15.0/Bin/MSBuild.exe" cmTC_cb9a7.vcxproj /p:Configuration=Debug /p:Platform=Win32 /p:VisualStudioVersion=15.0 /v:n
+        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/MSBuild/15.0/Bin/MSBuild.exe" cmTC_2207d.vcxproj /p:Configuration=Debug /p:Platform=Win32 /p:VisualStudioVersion=15.0 /v:n
         Microsoft (R) Build Engine version 15.9.21+g9802d43bc3 for .NET Framework
         Copyright (C) Microsoft Corporation. All rights reserved.
         
-        Build started 3/10/2024 5:30:23 PM.
-        Project "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-i4s4d8\\cmTC_cb9a7.vcxproj" on node 1 (default targets).
+        Build started 3/12/2024 11:30:18 PM.
+        Project "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-yum0pa\\cmTC_2207d.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_cb9a7.dir\\Debug\\".
-          Creating directory "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-i4s4d8\\Debug\\".
-          Creating directory "cmTC_cb9a7.dir\\Debug\\cmTC_cb9a7.tlog\\".
+          Creating directory "cmTC_2207d.dir\\Debug\\".
+          Creating directory "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-yum0pa\\Debug\\".
+          Creating directory "cmTC_2207d.dir\\Debug\\cmTC_2207d.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_cb9a7.dir\\Debug\\cmTC_cb9a7.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Creating "cmTC_2207d.dir\\Debug\\cmTC_2207d.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
         ClCompile:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x86\\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_cb9a7.dir\\Debug\\\\" /Fd"cmTC_cb9a7.dir\\Debug\\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.29\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x86\\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_2207d.dir\\Debug\\\\" /Fd"cmTC_2207d.dir\\Debug\\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.16.27051 for x86
           Copyright (C) Microsoft Corporation.  All rights reserved.
           
-          cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_cb9a7.dir\\Debug\\\\" /Fd"cmTC_cb9a7.dir\\Debug\\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.29\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
+          cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_2207d.dir\\Debug\\\\" /Fd"cmTC_2207d.dir\\Debug\\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
           
         Link:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:"Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-i4s4d8\\Debug\\cmTC_cb9a7.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-i4s4d8/Debug/cmTC_cb9a7.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-i4s4d8/Debug/cmTC_cb9a7.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_cb9a7.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_cb9a7.vcxproj -> Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-i4s4d8\\Debug\\cmTC_cb9a7.exe
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:"Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-yum0pa\\Debug\\cmTC_2207d.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-yum0pa/Debug/cmTC_2207d.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-yum0pa/Debug/cmTC_2207d.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_2207d.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_2207d.vcxproj -> Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-yum0pa\\Debug\\cmTC_2207d.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_cb9a7.dir\\Debug\\cmTC_cb9a7.tlog\\unsuccessfulbuild".
-          Touching "cmTC_cb9a7.dir\\Debug\\cmTC_cb9a7.tlog\\cmTC_cb9a7.lastbuildstate".
-        Done Building Project "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-i4s4d8\\cmTC_cb9a7.vcxproj" (default targets).
+          Deleting file "cmTC_2207d.dir\\Debug\\cmTC_2207d.tlog\\unsuccessfulbuild".
+          Touching "cmTC_2207d.dir\\Debug\\cmTC_2207d.tlog\\cmTC_2207d.lastbuildstate".
+        Done Building Project "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-yum0pa\\cmTC_2207d.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.32
+        Time Elapsed 00:00:00.66
         
       exitCode: 0
   -
-    kind: "message-v1"
-    backtrace:
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:170 (message)"
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
-    message: |
-      Parsed CXX implicit link information:
-        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
-        linker tool for 'CXX': C:/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/VC/Tools/MSVC/14.16.27023/bin/HostX86/x86/link.exe
-        implicit libs: []
-        implicit objs: []
-        implicit dirs: []
-        implicit fwks: []
-      
-      
-  -
-    kind: "message-v1"
-    backtrace:
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:207 (cmake_determine_linker_id)"
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
-    message: |
-      Running the CXX compiler's linker: "C:/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/VC/Tools/MSVC/14.16.27023/bin/HostX86/x86/link.exe" "-v"
-      Microsoft (R) Incremental Linker Version 14.16.27051.0
-      Copyright (C) Microsoft Corporation.  All rights reserved.
-...
-
----
-events:
-  -
     kind: "try_compile-v1"
     backtrace:
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CheckSourceCompiles.cmake:77 (cmake_check_source_compiles)"
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/GenerateExportHeader.cmake:206 (check_source_compiles)"
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/GenerateExportHeader.cmake:263 (_check_cxx_compiler_attribute)"
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/GenerateExportHeader.cmake:420 (_test_compiler_has_deprecated)"
-      - "engine/CMakeLists.txt:5 (generate_export_header)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CheckSourceCompiles.cmake:77 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/GenerateExportHeader.cmake:206 (check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/GenerateExportHeader.cmake:263 (_check_cxx_compiler_attribute)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/GenerateExportHeader.cmake:420 (_test_compiler_has_deprecated)"
+      - "engine/CMakeLists.txt:12 (generate_export_header)"
     checks:
       - "Performing Test COMPILER_HAS_DEPRECATED_ATTR"
     directories:
-      source: "Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-plkwii"
-      binary: "Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-plkwii"
+      source: "Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-isj9c0"
+      binary: "Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-isj9c0"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc -std=c++11"
       CMAKE_EXE_LINKER_FLAGS: "/machine:X86"
@@ -307,61 +247,61 @@ events:
       variable: "COMPILER_HAS_DEPRECATED_ATTR"
       cached: true
       stdout: |
-        Change Dir: 'Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-plkwii'
+        Change Dir: 'Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-isj9c0'
         
-        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/MSBuild/15.0/Bin/MSBuild.exe" cmTC_44419.vcxproj /p:Configuration=Debug /p:Platform=Win32 /p:VisualStudioVersion=15.0 /v:n
+        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/MSBuild/15.0/Bin/MSBuild.exe" cmTC_36a3c.vcxproj /p:Configuration=Debug /p:Platform=Win32 /p:VisualStudioVersion=15.0 /v:n
         Microsoft (R) Build Engine version 15.9.21+g9802d43bc3 for .NET Framework
         Copyright (C) Microsoft Corporation. All rights reserved.
         
-        Build started 3/10/2024 6:56:34 PM.
-        Project "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-plkwii\\cmTC_44419.vcxproj" on node 1 (default targets).
+        Build started 3/12/2024 11:30:19 PM.
+        Project "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-isj9c0\\cmTC_36a3c.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_44419.dir\\Debug\\".
-          Creating directory "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-plkwii\\Debug\\".
-          Creating directory "cmTC_44419.dir\\Debug\\cmTC_44419.tlog\\".
+          Creating directory "cmTC_36a3c.dir\\Debug\\".
+          Creating directory "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-isj9c0\\Debug\\".
+          Creating directory "cmTC_36a3c.dir\\Debug\\cmTC_36a3c.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_44419.dir\\Debug\\cmTC_44419.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Creating "cmTC_36a3c.dir\\Debug\\cmTC_36a3c.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
         ClCompile:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x86\\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D COMPILER_HAS_DEPRECATED_ATTR /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_44419.dir\\Debug\\\\" /Fd"cmTC_44419.dir\\Debug\\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-plkwii\\src.cxx"
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x86\\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D COMPILER_HAS_DEPRECATED_ATTR /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_36a3c.dir\\Debug\\\\" /Fd"cmTC_36a3c.dir\\Debug\\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-isj9c0\\src.cxx"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.16.27051 for x86
           Copyright (C) Microsoft Corporation.  All rights reserved.
           
-          cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D COMPILER_HAS_DEPRECATED_ATTR /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_44419.dir\\Debug\\\\" /Fd"cmTC_44419.dir\\Debug\\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-plkwii\\src.cxx"
           src.cxx
+          cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D COMPILER_HAS_DEPRECATED_ATTR /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_36a3c.dir\\Debug\\\\" /Fd"cmTC_36a3c.dir\\Debug\\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-isj9c0\\src.cxx"
           
-        Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-plkwii\\src.cxx(1): error C2065: '__deprecated__': undeclared identifier [Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-plkwii\\cmTC_44419.vcxproj]
-        Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-plkwii\\src.cxx(1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int [Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-plkwii\\cmTC_44419.vcxproj]
-        Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-plkwii\\src.cxx(1): error C2448: '__attribute__': function-style initializer appears to be a function definition [Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-plkwii\\cmTC_44419.vcxproj]
-        Done Building Project "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-plkwii\\cmTC_44419.vcxproj" (default targets) -- FAILED.
+        Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-isj9c0\\src.cxx(1): error C2065: '__deprecated__': undeclared identifier [Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-isj9c0\\cmTC_36a3c.vcxproj]
+        Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-isj9c0\\src.cxx(1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int [Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-isj9c0\\cmTC_36a3c.vcxproj]
+        Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-isj9c0\\src.cxx(1): error C2448: '__attribute__': function-style initializer appears to be a function definition [Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-isj9c0\\cmTC_36a3c.vcxproj]
+        Done Building Project "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-isj9c0\\cmTC_36a3c.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-plkwii\\cmTC_44419.vcxproj" (default target) (1) ->
+        "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-isj9c0\\cmTC_36a3c.vcxproj" (default target) (1) ->
         (ClCompile target) -> 
-          Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-plkwii\\src.cxx(1): error C2065: '__deprecated__': undeclared identifier [Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-plkwii\\cmTC_44419.vcxproj]
-          Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-plkwii\\src.cxx(1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int [Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-plkwii\\cmTC_44419.vcxproj]
-          Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-plkwii\\src.cxx(1): error C2448: '__attribute__': function-style initializer appears to be a function definition [Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-plkwii\\cmTC_44419.vcxproj]
+          Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-isj9c0\\src.cxx(1): error C2065: '__deprecated__': undeclared identifier [Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-isj9c0\\cmTC_36a3c.vcxproj]
+          Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-isj9c0\\src.cxx(1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int [Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-isj9c0\\cmTC_36a3c.vcxproj]
+          Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-isj9c0\\src.cxx(1): error C2448: '__attribute__': function-style initializer appears to be a function definition [Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-isj9c0\\cmTC_36a3c.vcxproj]
         
             0 Warning(s)
             3 Error(s)
         
-        Time Elapsed 00:00:00.24
+        Time Elapsed 00:00:00.48
         
       exitCode: 1
   -
     kind: "try_compile-v1"
     backtrace:
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CheckSourceCompiles.cmake:77 (cmake_check_source_compiles)"
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/GenerateExportHeader.cmake:206 (check_source_compiles)"
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/GenerateExportHeader.cmake:269 (_check_cxx_compiler_attribute)"
-      - "C:/Program Files/CMake/share/cmake-3.29/Modules/GenerateExportHeader.cmake:420 (_test_compiler_has_deprecated)"
-      - "engine/CMakeLists.txt:5 (generate_export_header)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CheckSourceCompiles.cmake:77 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/GenerateExportHeader.cmake:206 (check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/GenerateExportHeader.cmake:269 (_check_cxx_compiler_attribute)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/GenerateExportHeader.cmake:420 (_test_compiler_has_deprecated)"
+      - "engine/CMakeLists.txt:12 (generate_export_header)"
     checks:
       - "Performing Test COMPILER_HAS_DEPRECATED"
     directories:
-      source: "Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-da35b8"
-      binary: "Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-da35b8"
+      source: "Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-5otnfy"
+      binary: "Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-5otnfy"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc -std=c++11"
       CMAKE_EXE_LINKER_FLAGS: "/machine:X86"
@@ -369,48 +309,48 @@ events:
       variable: "COMPILER_HAS_DEPRECATED"
       cached: true
       stdout: |
-        Change Dir: 'Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-da35b8'
+        Change Dir: 'Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-5otnfy'
         
-        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/MSBuild/15.0/Bin/MSBuild.exe" cmTC_9dc61.vcxproj /p:Configuration=Debug /p:Platform=Win32 /p:VisualStudioVersion=15.0 /v:n
+        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/MSBuild/15.0/Bin/MSBuild.exe" cmTC_626f6.vcxproj /p:Configuration=Debug /p:Platform=Win32 /p:VisualStudioVersion=15.0 /v:n
         Microsoft (R) Build Engine version 15.9.21+g9802d43bc3 for .NET Framework
         Copyright (C) Microsoft Corporation. All rights reserved.
         
-        Build started 3/10/2024 6:56:35 PM.
-        Project "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-da35b8\\cmTC_9dc61.vcxproj" on node 1 (default targets).
+        Build started 3/12/2024 11:30:20 PM.
+        Project "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5otnfy\\cmTC_626f6.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_9dc61.dir\\Debug\\".
-          Creating directory "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-da35b8\\Debug\\".
-          Creating directory "cmTC_9dc61.dir\\Debug\\cmTC_9dc61.tlog\\".
+          Creating directory "cmTC_626f6.dir\\Debug\\".
+          Creating directory "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5otnfy\\Debug\\".
+          Creating directory "cmTC_626f6.dir\\Debug\\cmTC_626f6.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_9dc61.dir\\Debug\\cmTC_9dc61.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Creating "cmTC_626f6.dir\\Debug\\cmTC_626f6.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
         ClCompile:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x86\\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D COMPILER_HAS_DEPRECATED /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_9dc61.dir\\Debug\\\\" /Fd"cmTC_9dc61.dir\\Debug\\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-da35b8\\src.cxx"
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x86\\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D COMPILER_HAS_DEPRECATED /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_626f6.dir\\Debug\\\\" /Fd"cmTC_626f6.dir\\Debug\\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5otnfy\\src.cxx"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.16.27051 for x86
           Copyright (C) Microsoft Corporation.  All rights reserved.
           
-          cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D COMPILER_HAS_DEPRECATED /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_9dc61.dir\\Debug\\\\" /Fd"cmTC_9dc61.dir\\Debug\\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-da35b8\\src.cxx"
           src.cxx
+          cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D COMPILER_HAS_DEPRECATED /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_626f6.dir\\Debug\\\\" /Fd"cmTC_626f6.dir\\Debug\\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5otnfy\\src.cxx"
           
-        Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-da35b8\\src.cxx(2): warning C4996: 'somefunc': was declared deprecated [Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-da35b8\\cmTC_9dc61.vcxproj]
-          Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-da35b8\\src.cxx(1): note: see declaration of 'somefunc'
+        Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5otnfy\\src.cxx(2): warning C4996: 'somefunc': was declared deprecated [Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5otnfy\\cmTC_626f6.vcxproj]
+          Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5otnfy\\src.cxx(1): note: see declaration of 'somefunc'
         Link:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:"Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-da35b8\\Debug\\cmTC_9dc61.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-da35b8/Debug/cmTC_9dc61.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-da35b8/Debug/cmTC_9dc61.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_9dc61.dir\\Debug\\src.obj
-          cmTC_9dc61.vcxproj -> Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-da35b8\\Debug\\cmTC_9dc61.exe
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:"Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5otnfy\\Debug\\cmTC_626f6.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-5otnfy/Debug/cmTC_626f6.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"Z:/shellhack/build/CMakeFiles/CMakeScratch/TryCompile-5otnfy/Debug/cmTC_626f6.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_626f6.dir\\Debug\\src.obj
+          cmTC_626f6.vcxproj -> Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5otnfy\\Debug\\cmTC_626f6.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_9dc61.dir\\Debug\\cmTC_9dc61.tlog\\unsuccessfulbuild".
-          Touching "cmTC_9dc61.dir\\Debug\\cmTC_9dc61.tlog\\cmTC_9dc61.lastbuildstate".
-        Done Building Project "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-da35b8\\cmTC_9dc61.vcxproj" (default targets).
+          Deleting file "cmTC_626f6.dir\\Debug\\cmTC_626f6.tlog\\unsuccessfulbuild".
+          Touching "cmTC_626f6.dir\\Debug\\cmTC_626f6.tlog\\cmTC_626f6.lastbuildstate".
+        Done Building Project "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5otnfy\\cmTC_626f6.vcxproj" (default targets).
         
         Build succeeded.
         
-        "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-da35b8\\cmTC_9dc61.vcxproj" (default target) (1) ->
+        "Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5otnfy\\cmTC_626f6.vcxproj" (default target) (1) ->
         (ClCompile target) -> 
-          Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-da35b8\\src.cxx(2): warning C4996: 'somefunc': was declared deprecated [Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-da35b8\\cmTC_9dc61.vcxproj]
+          Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5otnfy\\src.cxx(2): warning C4996: 'somefunc': was declared deprecated [Z:\\shellhack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5otnfy\\cmTC_626f6.vcxproj]
         
             1 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.60
+        Time Elapsed 00:00:00.65
         
       exitCode: 0
 ...

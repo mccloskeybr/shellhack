@@ -1,5 +1,9 @@
 Z:/shellhack/build/CMakeFiles/generate.stamp
 Z:/shellhack/build/common/CMakeFiles/generate.stamp
 Z:/shellhack/build/engine/CMakeFiles/generate.stamp
+Z:/shellhack/build/engine/memory/CMakeFiles/generate.stamp
+Z:/shellhack/build/engine/render/CMakeFiles/generate.stamp
+Z:/shellhack/build/engine/world/CMakeFiles/generate.stamp
+Z:/shellhack/build/engine/world/entity/CMakeFiles/generate.stamp
 Z:/shellhack/build/platform/CMakeFiles/generate.stamp
 Z:/shellhack/build/platform/win32/CMakeFiles/generate.stamp

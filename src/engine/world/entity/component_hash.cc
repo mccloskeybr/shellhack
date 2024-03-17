@@ -2,7 +2,7 @@
 
 #include <common/status.h>
 #include <common/macros.h>
-#include <engine/memory/memory.h>
+#include <engine/memory/allocator.h>
 #include <engine/world/entity/entity.h>
 #include <engine/world/entity/component.h>
 
@@ -20,24 +20,19 @@ void ComponentHash_Insert(
   ASSERT(component.type == hash_map->type);
 
   ComponentHash to_store = {};
-  to_store.entity_id = entity_id;
-  to_store.component = component;
+  to_store.ec_pair.entity_id = entity_id;
+  to_store.ec_pair.component = component;
 
   int32_t index = ComponentHash_Hash(hash_map, entity_id);
 
   // validate only one component allowed per entity.
   for (ComponentHash* ptr = hash_map->table[index]; ptr != NULL; ptr = ptr->next) {
-    ASSERT(ptr->entity_id != entity_id);
+    ASSERT(ptr->ec_pair.entity_id != entity_id);
   }
 
   // find space to use.
-  ComponentHash* ptr = NULL;
-  if (hash_map->free_list != NULL) {
-    ptr = hash_map->free_list;
-    hash_map->free_list = hash_map->free_list->next;
-  } else {
-    ptr = (ComponentHash*)Arena_PushSize(hash_map->arena, sizeof(ComponentHash));
-  }
+  ComponentHash* ptr = (ComponentHash*) Allocator_AllocateBlock(
+      hash_map->allocator, sizeof(ComponentHash));
   ASSERT(ptr != NULL);
 
   // insert.
@@ -50,42 +45,57 @@ void ComponentHash_Remove(
     EntityId entity_id) {
   int32_t index = ComponentHash_Hash(hash_map, entity_id);
   for (ComponentHash* ptr = hash_map->table[index]; ptr != NULL; ptr = ptr->next) {
-    if (ptr->next != NULL && ptr->next->entity_id == entity_id) {
+    if (ptr->next != NULL && ptr->next->ec_pair.entity_id == entity_id) {
       ComponentHash* to_free = ptr->next;
-      ptr->next = to_free->next;
-      to_free->next = hash_map->free_list;
-      hash_map->free_list = to_free;
+      ptr->next = ptr->next->next;
+      Allocator_FreeBlock(hash_map->allocator, to_free);
       break;
     }
   }
 }
 
-Component* ComponentHash_Get(
+EntityIdComponentPair* ComponentHash_Get(
     ComponentHashMap* hash_map,
     EntityId entity_id) {
   int32_t index = ComponentHash_Hash(hash_map, entity_id);
   for (ComponentHash* ptr = hash_map->table[index]; ptr != NULL; ptr = ptr->next) {
-    if (ptr->entity_id == entity_id) {
-      return &ptr->component;
+    if (ptr->ec_pair.entity_id == entity_id) {
+      return &ptr->ec_pair;
     }
   }
   return NULL;
 }
 
-ComponentHash* ComponentHashIter_First(
-    ComponentHashMapIter* iter,
+EntityIdComponentCollection ComponentHash_Collect(
+    ComponentHashMap* hash_map) {
+  EntityIdComponentCollection collection = {};
+  for (int32_t i = 0; i < ARRAY_SIZE(hash_map->table); i++) {
+    if (hash_map->table[i] == NULL) {
+      continue;
+    }
+    for (ComponentHash* ptr = hash_map->table[i]; ptr != NULL; ptr = ptr->next) {
+      collection.ec_pairs[collection.size++] = &ptr->ec_pair;
+    }
+  }
+  return collection;
+}
+
+EntityIdComponentPair* CHM_IterFirst(
+    CHM_Iter* iter,
     ComponentHashMap* hash_map) {
   *iter = {};
   iter->hash_map = hash_map;
-  return ComponentHashIter_Next(iter);
+  return CHM_IterNext(iter);
 }
 
-ComponentHash* ComponentHashIter_Next(
-    ComponentHashMapIter* iter) {
+EntityIdComponentPair* CHM_IterNext(
+    CHM_Iter* iter) {
   if (iter->ptr != NULL) {
     iter->ptr = iter->ptr->next;
-    if (iter->ptr == NULL) {
-      return ComponentHashIter_Next(iter);
+    if (iter->ptr != NULL) {
+      return &iter->ptr->ec_pair;
+    } else {
+      return CHM_IterNext(iter);
     }
   } else {
     for (int32_t i = iter->index; i < ARRAY_SIZE(iter->hash_map->table); i++) {
@@ -93,14 +103,14 @@ ComponentHash* ComponentHashIter_Next(
         // NOTE: next time to loop should be after all elems are exhausted.
         iter->index = i + 1;
         iter->ptr = iter->hash_map->table[i];
-        return iter->ptr;
+        return &iter->ptr->ec_pair;
       }
     }
   }
   return NULL;
 }
 
-bool ComponentHashIter_Done(
-    ComponentHashMapIter* iter) {
+bool CHM_IterDone(
+    CHM_Iter* iter) {
   return iter->ptr == NULL;
 }

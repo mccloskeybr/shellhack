@@ -1,51 +1,53 @@
 #ifndef WORLD_ENTITY_COMPONENT_HASH_H
 #define WORLD_ENTITY_COMPONENT_HASH_H
 
-#include <engine/memory/memory.h>
+#include <engine/memory/allocator.h>
 #include <engine/world/entity/entity.h>
 #include <engine/world/entity/component.h>
 
-typedef struct _ComponentHash {
-  EntityId entity_id;
-  Component component;
-  _ComponentHash* next;
-} ComponentHash;
+struct ComponentHash {
+  EntityIdComponentPair ec_pair;
+  ComponentHash* next;
+};
 
-typedef struct _ComponentHashMap {
+struct ComponentHashMap {
   ComponentType type;
   ComponentHash* table[256];
-  ComponentHash* free_list;
-  Arena* arena;
-} ComponentHashMap;
+  Allocator* allocator;
+};
 
-typedef struct _ComponentHashMapIter {
+struct CHM_Iter {
   int32_t index;
   ComponentHash* ptr;
   ComponentHashMap* hash_map;
-} ComponentHashMapIter;
+};
 
 void ComponentHash_Insert(
     ComponentHashMap* hash_map,
     EntityId entity_id,
     Component component);
 
+EntityIdComponentPair* ComponentHash_Get(
+    ComponentHashMap* hash_map,
+    EntityId entity_id);
+
 void ComponentHash_Remove(
     ComponentHashMap* hash_map,
     EntityId entity_id);
 
-Component* ComponentHash_Get(
-    ComponentHashMap* hash_map,
-    EntityId entity_id);
-
-ComponentHash* ComponentHashIter_First(
-    ComponentHashMapIter* iter,
+// NOTE: collection is spatially inefficient compared to the iterator.
+// e.g. when collecting multiple components simultaneously.
+EntityIdComponentCollection ComponentHash_Collect(
     ComponentHashMap* hash_map);
 
-ComponentHash* ComponentHashIter_Next(
-    ComponentHashMapIter* iter);
+EntityIdComponentPair* CHM_IterFirst(
+    CHM_Iter* iter,
+    ComponentHashMap* hash_map);
 
-bool ComponentHashIter_Done(
-    ComponentHashMapIter* iter);
+EntityIdComponentPair* CHM_IterNext(
+    CHM_Iter* iter);
+
+bool CHM_IterDone(
+    CHM_Iter* iter);
 
 #endif
-

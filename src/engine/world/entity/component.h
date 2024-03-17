@@ -13,26 +13,36 @@ enum ComponentType {
 };
 #define NUM_COMPONENT_TYPES COMPONENT_TYPE_END_MARKER
 
-typedef struct {
+struct SpatialComponent {
   V2 world_pos;
-} SpatialComponent;
+};
 
-typedef struct {
+struct CollisionComponent {
   bool collides;
   float radius;
-} CollisionComponent;
+};
 
-typedef struct {
+struct PlayerControllerComponent {
   EntityId player_id;
-} PlayerControllerComponent;
+};
 
-typedef struct {
+struct Component {
   ComponentType type;
   union {
     SpatialComponent spatial;
     CollisionComponent collision;
     PlayerControllerComponent player_controller;
   };
-} Component;
+};
+
+struct EntityIdComponentPair {
+  EntityId entity_id;
+  Component component;
+};
+
+struct EntityIdComponentCollection {
+  EntityIdComponentPair* ec_pairs[MAX_ENTITIES];
+  int32_t size;
+};
 
 #endif

@@ -1,5 +1,5 @@
-#ifndef ENGINE_MEMORY
-#define ENGINE_MEMORY
+#ifndef ENGINE_MEMORY_H
+#define ENGINE_MEMORY_H
 
 #include <common/status.h>
 #include <inttypes.h>

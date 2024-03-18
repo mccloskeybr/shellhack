@@ -1,33 +1,58 @@
 #include <engine/world/query.h>
 
 #include <engine/world/entity/component.h>
+#include <engine/world/entity/component_hash.h>
 #include <engine/world/world.h>
+#include <inttypes.h>
 
-EntityIdComponentCollection Query_Execute(
-    World* world,
-    Query query) {
-  ASSERT(ARRAY_SIZE(query.with) > 0);
-
-  // collect the initial round that we can hash against, since collecting is expensive.
-  EntityIdComponentCollection results = ComponentHash_Collect(
-      &world->component_maps[query.with[0]]);
-
-  // loop over all of the requested inclusion components
-  for (int32_t i = 1; i < ARRAY_SIZE(query.with); i++) {
-    int32_t intersection_size = 0;
-    EntityIdComponentCollection intersection = results;
-
-    // loop over all of the entities we're currently keeping track of.
-    for (int j = 0; j < results.size; j++) {
-
-      // see if it also has the next requested component id
-      EntityId t_eid = results.ec_pairs[j]->entity_id;
-      EntityIdComponentPair t_pair =
-        ComponentHash_Get(&world->component_maps[query.with[i]], t_eid;
-      if (t_pair != NULL) {
-        // intersection[intersection_size++] =
+static void Query_ExecuteWithFilter(
+    List* entities,
+    struct World* world,
+    Query* query) {
+  for (uint32_t i = 0; i < entities->size; i++) {
+    EntityId test_eid = LIST_GET(entities, i, EntityId);
+    for (uint32_t j = 0; j < query->with_size; j++) {
+      Component* component = ComponentHash_Get(
+          &world->component_maps[query->with[j]],
+          test_eid);
+      if (component == NULL) {
+        LIST_REMOVE(entities, i);
+        i--;
+        break;
       }
     }
-    results = intersection;
   }
+}
+
+static void Query_ExecuteWithoutFilter(
+    List* entities,
+    World* world,
+    Query* query) {
+  for (uint32_t i = 0; i < entities->size; i++) {
+    EntityId test_eid = LIST_GET(entities, i, EntityId);
+    for (uint32_t j = 0; j < query->without_size; j++) {
+      Component* component = ComponentHash_Get(
+          &world->component_maps[query->without[j]],
+          test_eid);
+      if (component != NULL) {
+        LIST_REMOVE(entities, i);
+        i--;
+        break;
+      }
+    }
+  }
+}
+
+QueryResult Query_Execute(
+    struct World* world,
+    Query query) {
+  List entities = LIST_COPY(
+      &world->allocator,
+      &world->entities);
+  Query_ExecuteWithFilter(&entities, world, &query);
+  Query_ExecuteWithoutFilter(&entities, world, &query);
+
+  QueryResult result;
+  result.entities = entities;
+  return result;
 }

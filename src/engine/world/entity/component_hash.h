@@ -6,7 +6,8 @@
 #include <engine/world/entity/component.h>
 
 struct ComponentHash {
-  EntityIdComponentPair ec_pair;
+  EntityId key;
+  Component value;
   ComponentHash* next;
 };
 
@@ -24,27 +25,22 @@ struct CHM_Iter {
 
 void ComponentHash_Insert(
     ComponentHashMap* hash_map,
-    EntityId entity_id,
-    Component component);
+    EntityId key,
+    Component value);
 
-EntityIdComponentPair* ComponentHash_Get(
+Component* ComponentHash_Get(
     ComponentHashMap* hash_map,
-    EntityId entity_id);
+    EntityId key);
 
 void ComponentHash_Remove(
     ComponentHashMap* hash_map,
-    EntityId entity_id);
+    EntityId key);
 
-// NOTE: collection is spatially inefficient compared to the iterator.
-// e.g. when collecting multiple components simultaneously.
-EntityIdComponentCollection ComponentHash_Collect(
-    ComponentHashMap* hash_map);
-
-EntityIdComponentPair* CHM_IterFirst(
+ComponentHash* CHM_IterFirst(
     CHM_Iter* iter,
     ComponentHashMap* hash_map);
 
-EntityIdComponentPair* CHM_IterNext(
+ComponentHash* CHM_IterNext(
     CHM_Iter* iter);
 
 bool CHM_IterDone(

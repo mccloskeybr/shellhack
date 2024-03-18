@@ -2,42 +2,26 @@
 #define WORLD_QUERY_H
 
 #include <engine/world/entity/component.h>
-#include <engine/world/world.h>
+#include <engine/memory/list.h>
+#include <inttypes.h>
 
 #define TERM_MAX 10
 
+typedef struct World World;
+
 struct Query {
   ComponentType with[TERM_MAX];
+  uint32_t with_size;
+
   ComponentType without[TERM_MAX];
+  uint32_t without_size;
 };
 
-struct QueryResults {
-  // think of a better way to store this.
-  // could just throw it in the arena? resize memes?
-  EntityId[MAX_ENTITIES] entities;
+struct QueryResult {
+  List entities;
 };
 
-struct QueryResultsHash {
-  Query query;
-  QueryResults results;
-  QueryResultsHash* next;
-};
-
-struct QueryResultsHashMap {
-  QueryResultsHash* table[258];
-  QueryResultsHash* free_list;
-  Arena* arena;
-};
-
-// this gets stored in the world.
-struct QueryCache {
-  // think of a better way to store this.
-  // could just throw it in the arena? resize memes?
-  QueryResultsHashMap* query_results_map[10];
-  Arena* arena;
-};
-
-QueryResults Query_Execute(
+QueryResult Query_Execute(
     World* world,
     Query query);
 

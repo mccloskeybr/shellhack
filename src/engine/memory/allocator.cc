@@ -39,12 +39,18 @@ Status Allocator_Init(
 void* Allocator_AllocateBlock(
     Allocator* allocator,
     size_t block_size) {
-  // loop through the chain to find the smallest slot we can fit the block in.
+  ASSERT(allocator != NULL);
+
+  // use an adjusted size as it ensures there's always enough room in the event
+  // of a split.
+  // TODO: consider using formal memory chunks of uniform size as an alternative.
+  size_t block_size_adj = block_size + sizeof(MemBlockHeader);
+
   MemBlockHeader* best_fit = NULL;
   for (MemBlockHeader* ptr = allocator->sentinel.next;
       ptr != &allocator->sentinel;
       ptr = ptr->next) {
-    if (ptr->used || block_size > ptr->block_size) { continue; }
+    if (ptr->used || block_size_adj > ptr->block_size) { continue; }
     if (best_fit == NULL || best_fit->block_size > ptr->block_size) {
       best_fit = ptr;
     }
@@ -52,24 +58,29 @@ void* Allocator_AllocateBlock(
   ASSERT(best_fit != NULL);
   ASSERT(best_fit != &allocator->sentinel);
 
-  // split best_fit so used is left partition, freed is right partition.
-  MemBlockHeader* split =
-    (MemBlockHeader*)((uint8_t*)best_fit + sizeof(MemBlockHeader) + block_size);
-  split->used = false;
-  split->block_size = best_fit->block_size - sizeof(MemBlockHeader) - block_size;
-  split->next = best_fit->next;
-  split->prev = best_fit;
+  if (best_fit->block_size > block_size_adj) {
+    MemBlockHeader* split =
+      (MemBlockHeader*)((uint8_t*)best_fit + sizeof(MemBlockHeader) + block_size_adj);
+    split->used = false;
+    split->block_size = best_fit->block_size - sizeof(MemBlockHeader) - block_size_adj;
+    split->next = best_fit->next;
+    split->prev = best_fit;
+    ASSERT(split->block_size > 0);
+
+    best_fit->next = split;
+  }
 
   best_fit->used = true;
-  best_fit->block_size = block_size;
-  best_fit->next = split;
+  best_fit->block_size = block_size_adj;
   return (uint8_t*) best_fit + sizeof(MemBlockHeader);
 }
 
 void Allocator_FreeBlock(
     Allocator* allocator,
     void* block) {
+  ASSERT(allocator != NULL);
   ASSERT(block != NULL);
+
   MemBlockHeader* header = (MemBlockHeader*)((uint8_t*)block - sizeof(MemBlockHeader));
   Allocator_ZeroRegion(block, header->block_size);
   header->used = false;

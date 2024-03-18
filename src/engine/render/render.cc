@@ -22,13 +22,18 @@ void Render_DrawEntitiesAroundCamera(
     const Camera* const camera,
     World* world) {
 
-  EntityIdComponentCollection spatials = ComponentHash_Collect(
-        &world->component_maps[COMPONENT_TYPE_SPATIAL]);
-  for (int32_t i = 0; i < spatials.size; i++) {
-    Component spatial = spatials.ec_pairs[i]->component;
+  Query spatial_query = {};
+  spatial_query.with[0] = COMPONENT_TYPE_SPATIAL;
+  spatial_query.with_size = 1;
+  QueryResult* spatial_query_results = World_Query(world, spatial_query);
+
+  for (uint32_t i = 0; i < spatial_query_results->entities.size; i++) {
+    EntityId eid = LIST_GET(&spatial_query_results->entities, i, EntityId);
+    Component* spatial =
+      ComponentHash_Get(&world->component_maps[COMPONENT_TYPE_SPATIAL], eid);
 
     V2 screen_pos =
-      spatial.spatial.world_pos -
+      spatial->spatial.world_pos -
       camera->viewport.center_point +
       V2{camera->viewport.width/2.0f, camera->viewport.height/2.0f};
     Gizmos_DrawRectangle(

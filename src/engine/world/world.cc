@@ -9,10 +9,13 @@
 #include <engine/world/entity/entity.h>
 #include <engine/world/entity/component.h>
 #include <engine/world/entity/component_hash.h>
+#include <engine/world/query.h>
 
 static EntityId
 World_AddEntity(World* world) {
-  return world->entity_count++;
+  EntityId entity_id = world->next_entity_id++;
+  LIST_ADD(&world->entities, entity_id, EntityId);
+  return entity_id;
 }
 
 void World_InsertComponent(
@@ -44,44 +47,7 @@ static void InitializePlayer(World* world) {
   player_controller_component.type = COMPONENT_TYPE_PLAYER_CONTROLLER;
   player_controller_component.player_controller.player_id = player_id;
   World_InsertComponent(world, player_controller_id, player_controller_component);
-}
 
-void World_Initialize(
-    World* world,
-    Memory* memory) {
-  Arena world_arena;
-  ASSERT_OK(Memory_InitializePermArena(
-        &world_arena, memory, MEGABYTES(64)));
-  ASSERT_OK(Allocator_Init(
-        &world->allocator, world_arena));
-  for (int32_t i = 0; i < ARRAY_SIZE(world->component_maps); i++) {
-    ComponentHashMap* map = &world->component_maps[i];
-    *map = {};
-    map->type = (ComponentType)i;
-    map->allocator = &world->allocator;
-  }
-
-  List test_list = LIST_CREATE(&world->allocator, int32_t);
-  LIST_ADD(&test_list, 0, int32_t);
-  LIST_ADD(&test_list, 1, int32_t);
-  LIST_ADD(&test_list, 2, int32_t);
-  LIST_ADD(&test_list, 3, int32_t);
-  LIST_ADD(&test_list, 4, int32_t);
-  LIST_ADD(&test_list, 5, int32_t);
-
-  ASSERT(LIST_GET(&test_list, 0, int32_t) == 0);
-  ASSERT(LIST_GET(&test_list, 1, int32_t) == 1);
-  ASSERT(LIST_GET(&test_list, 2, int32_t) == 2);
-  ASSERT(LIST_GET(&test_list, 3, int32_t) == 3);
-  ASSERT(LIST_GET(&test_list, 4, int32_t) == 4);
-  ASSERT(LIST_GET(&test_list, 5, int32_t) == 5);
-
-  LIST_REMOVE(&test_list, 0);
-  LIST_REMOVE(&test_list, 0);
-  LIST_REMOVE(&test_list, 0);
-  LIST_REMOVE(&test_list, 0);
-
-  InitializePlayer(world);
 }
 
 static void UpdatePlayerController(
@@ -92,14 +58,21 @@ static void UpdatePlayerController(
     return;
   }
 
-  EntityIdComponentCollection player_controllers = ComponentHash_Collect(
-        &world->component_maps[COMPONENT_TYPE_PLAYER_CONTROLLER]);
-  EntityIdComponentCollection spatials = ComponentHash_Collect(
-        &world->component_maps[COMPONENT_TYPE_SPATIAL]);
+  Query pc_query = {};
+  pc_query.with[0] = COMPONENT_TYPE_PLAYER_CONTROLLER;
+  pc_query.with_size = 1;
+  QueryResult* pc_query_results = World_Query(world, pc_query);
 
-  for (int32_t i = 0; i < player_controllers.size; i++) {
-    for (int32_t j = 0; j < spatials.size; j++) {
-      Component* spatial = &spatials.ec_pairs[j]->component;
+  Query spatial_query = {};
+  spatial_query.with[0] = COMPONENT_TYPE_SPATIAL;
+  spatial_query.with_size = 1;
+  QueryResult* spatial_query_results = World_Query(world, spatial_query);
+
+  for (uint32_t i = 0; i < pc_query_results->entities.size; i++) {
+    for (uint32_t j = 0; j < spatial_query_results->entities.size; j++) {
+      EntityId eid = LIST_GET(&spatial_query_results->entities, j, EntityId);
+      Component* spatial =
+        ComponentHash_Get(&world->component_maps[COMPONENT_TYPE_SPATIAL], eid);
 
       V2 dir = {};
       if (controller->move_up.is_pressed) {
@@ -128,10 +101,45 @@ static void UpdatePlayerController(
   }
 }
 
+void World_Initialize(
+    World* world,
+    Memory* memory) {
+  Arena world_arena;
+  ASSERT_OK(Memory_InitializePermArena(
+        &world_arena, memory, MEGABYTES(64)));
+  ASSERT_OK(Allocator_Init(
+        &world->allocator, world_arena));
+
+  world->entities = LIST_CREATE(&world->allocator, EntityId);
+
+  for (int32_t i = 0; i < ARRAY_SIZE(world->component_maps); i++) {
+    ComponentHashMap* map = &world->component_maps[i];
+    *map = {};
+    map->type = (ComponentType)i;
+    map->allocator = &world->allocator;
+  }
+
+  QueryResultHashMap* query_cache = &world->query_cache;
+  *query_cache = {};
+  query_cache->allocator = &world->allocator;
+
+  InitializePlayer(world);
+}
 
 void World_Update(
     World* world,
     const Resources* const resources,
     Memory* memory) {
   UpdatePlayerController(world, resources);
+}
+
+QueryResult* World_Query(
+    World* world,
+    Query query) {
+  QueryResult* cached_results = QueryHash_Get(&world->query_cache, query);
+  if (cached_results != NULL) { return cached_results; }
+
+  QueryResult results = Query_Execute(world, query);
+  QueryHash_Insert(&world->query_cache, query, results);
+  return QueryHash_Get(&world->query_cache, query);
 }

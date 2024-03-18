@@ -8,24 +8,30 @@
 #define LIST_DEFAULT_CAPACITY 2
 #define LIST_GROW_FACTOR 2
 
-#define LIST_CREATE(allocator, type) \
+#define LIST_CREATE(allocator, type)   \
   List_Create(allocator, sizeof(type))
 
-#define LIST_ADD(list, e, type) \
-  {                             \
-    type _elem = e;             \
-    List_Add(list, &_elem);     \
+#define LIST_FREE(list)                \
+  List_Free(list)
+
+#define LIST_COPY(allocator, list)     \
+  List_CreateCopy(allocator, list)
+
+#define LIST_ADD(list, e, type)        \
+  {                                    \
+    type _elem = e;                    \
+    List_Add(list, &_elem);            \
   }
 
-#define LIST_GET(list, i, type) \
+#define LIST_GET(list, i, type)        \
   *(type*)List_Get(list, i)
 
-#define LIST_REMOVE(list, i) \
+#define LIST_REMOVE(list, i)           \
   List_Remove(list, i)
 
 
 struct List {
-  void* first;
+  void* arr;
   uint32_t size;
   uint32_t capacity;
   size_t elem_size;
@@ -36,11 +42,17 @@ List List_Create(
     Allocator* allocator,
     size_t elem_size);
 
+List List_CreateCopy(
+    Allocator* allocator,
+    List* to_copy);
+
+void List_Free(
+    List* list);
+
 void List_Add(
     List* list,
     void* elem);
 
-// TODO: maybe a macro can help templatize this
 void* List_Get(
     List* list,
     uint32_t index);

@@ -35,14 +35,4 @@ struct Component {
   };
 };
 
-struct EntityIdComponentPair {
-  EntityId entity_id;
-  Component component;
-};
-
-struct EntityIdComponentCollection {
-  EntityIdComponentPair* ec_pairs[MAX_ENTITIES];
-  int32_t size;
-};
-
 #endif

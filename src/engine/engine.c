@@ -12,8 +12,7 @@
 #include <engine/world/world.h>
 #include <platform/platform_runner.h>
 
-static void
-InitializeGameState(
+static void InitializeGameState(
     GameState* game_state,
     Memory* memory,
     const PixelBuffer* const pixel_buffer) {
@@ -26,16 +25,17 @@ InitializeGameState(
 
   const float vp_w = (float) pixel_buffer->width;
   const float vp_h = (float) pixel_buffer->height;
-  game_state->camera.viewport = RectangleCenterDims(
-      { vp_w / 2.0f, vp_h / 2.0f }, vp_w, vp_h);
+  const V2 vp_c = (V2){ vp_w / 2.0f, vp_h / 2.0f };
+  game_state->camera.viewport = Shape_RectCenterDims(
+      vp_c, vp_w, vp_h);
 
   World_Initialize(&game_state->world, memory);
 
   game_state->is_initialized = true;
 }
 
-extern "C" ENGINE_EXPORT Status
-Engine_Update(
+__declspec(dllexport)
+Status Engine_Update(
     float dt_s,
     Memory* memory,
     Input* input,
@@ -53,7 +53,7 @@ Engine_Update(
   resources.input = input;
   World_Update(&game_state->world, &resources, memory);
 
-  Render_FlushScreen(pixel_buffer, {0.0f, 0.0f, 0.0f});
+  Render_FlushScreen(pixel_buffer, (Color){0.0f, 0.0f, 0.0f});
   Render_DrawEntitiesAroundCamera(
       pixel_buffer,
       &game_state->camera,

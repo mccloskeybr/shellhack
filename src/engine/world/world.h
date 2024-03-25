@@ -10,7 +10,7 @@
 #include <engine/world/query_hash.h>
 #include <engine/world/query.h>
 
-struct World {
+typedef struct World {
   List entities;
   EntityId next_entity_id;
 
@@ -18,24 +18,16 @@ struct World {
   QueryResultHashMap query_cache;
 
   Allocator allocator;
-};
+} World;
 
-struct Resources {
+typedef struct Resources {
   float dt_s;
   Input* input;
-};
+} Resources;
 
-void World_Initialize(
-    World* world,
-    Memory* memory);
-
+void World_Initialize(World* world, Memory* memory);
 void World_Update(
-    World* world,
-    const Resources* const resources,
-    Memory* memory);
-
-QueryResult* World_Query(
-    World* world,
-    Query query);
+    World* world, const Resources* const resources, Memory* memory);
+QueryResult* World_Query(World* world, Query query);
 
 #endif

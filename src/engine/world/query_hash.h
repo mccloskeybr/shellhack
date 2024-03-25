@@ -4,16 +4,16 @@
 #include <engine/world/query.h>
 #include <engine/memory/allocator.h>
 
-struct QueryResultHash {
-  Query query;            // key
-  QueryResult result;   // value
-  QueryResultHash* next;
-};
+typedef struct QueryResultHash {
+  Query key;
+  QueryResult value;
+  struct QueryResultHash* next;
+} QueryResultHash;
 
-struct QueryResultHashMap {
+typedef struct QueryResultHashMap {
   QueryResultHash* table[258];
   Allocator* allocator;
-};
+} QueryResultHashMap;
 
 void QueryHash_Insert(
     QueryResultHashMap* hash_map,

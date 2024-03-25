@@ -3,7 +3,7 @@ add_subdirectory(memory)
 add_subdirectory(render)
 add_subdirectory(world)
 
-add_library(engine SHARED engine.h engine.cc)
+add_library(engine SHARED engine.h engine.c)
 target_link_libraries(engine PRIVATE
 	platform_runner
 	world
@@ -20,5 +20,4 @@ target_include_directories(engine PUBLIC ${CMAKE_BINARY_DIR}/exports)
 
 string(RANDOM LENGTH 5 rand)
 string(CONCAT pdb_name "engine_" ${rand})
-set_target_properties(engine PROPERTIES
-	PDB_NAME ${pdb_name})
+set_target_properties(engine PROPERTIES PDB_NAME ${pdb_name})

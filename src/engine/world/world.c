@@ -2,6 +2,7 @@
 
 #include <common/log.h>
 #include <common/macros.h>
+#include <common/mem_util.h>
 #include <engine/input/input.h>
 #include <engine/memory/memory.h>
 #include <engine/memory/allocator.h>
@@ -33,7 +34,7 @@ static void InitializePlayer(World* world) {
 
   Component spatial_component;
   spatial_component.type = COMPONENT_TYPE_SPATIAL;
-  spatial_component.spatial.world_pos = {100.0f, 100.0f};
+  spatial_component.spatial.world_pos = (V2){100.0f, 100.0f};
   World_InsertComponent(world, player_id, spatial_component);
 
   Component collision_component;
@@ -59,12 +60,12 @@ static void UpdatePlayerController(
   }
 
   Query pc_query = {};
-  pc_query.with[0] = COMPONENT_TYPE_PLAYER_CONTROLLER;
+  pc_query.with[TERM_MAX] = (ComponentType){COMPONENT_TYPE_PLAYER_CONTROLLER};
   pc_query.with_size = 1;
   QueryResult* pc_query_results = World_Query(world, pc_query);
 
   Query spatial_query = {};
-  spatial_query.with[0] = COMPONENT_TYPE_SPATIAL;
+  spatial_query.with[TERM_MAX] = (ComponentType){COMPONENT_TYPE_SPATIAL};
   spatial_query.with_size = 1;
   QueryResult* spatial_query_results = World_Query(world, spatial_query);
 
@@ -76,23 +77,23 @@ static void UpdatePlayerController(
 
       V2 dir = {};
       if (controller->move_up.is_pressed) {
-        dir += {0.0f, 1.0f};
+        dir = V2_Add(dir, (V2){0.0f, 1.0f});
       }
       if (controller->move_down.is_pressed) {
-        dir += {0.0f, -1.0f};
+        dir = V2_Add(dir, (V2){0.0f, -1.0f});
       }
       if (controller->move_left.is_pressed) {
-        dir += {-1.0f, 0.0f};
+        dir = V2_Add(dir, (V2){-1.0f, 0.0f});
       }
       if (controller->move_right.is_pressed) {
-        dir += {1.0f, 0.0f};
+        dir = V2_Add(dir, (V2){1.0f, 0.0f});
       }
-      if (Length(dir) > 0.0f) {
-        dir = Normalize(dir);
+      if (V2_Length(dir) > 0.0f) {
+        dir = V2_Normalize(dir);
       }
 
-      V2 vel = dir * 50.0f * resources->dt_s;
-      spatial->spatial.world_pos += vel;
+      V2 vel = V2_ScalarMult(50.0f * resources->dt_s, dir);
+      spatial->spatial.world_pos = V2_Add(spatial->spatial.world_pos, vel);
 
       LOG_INFO("player world pos <x: %0.1f, y: %.1f>",
           spatial->spatial.world_pos.x,
@@ -114,13 +115,13 @@ void World_Initialize(
 
   for (int32_t i = 0; i < ARRAY_SIZE(world->component_maps); i++) {
     ComponentHashMap* map = &world->component_maps[i];
-    *map = {};
+    Memory_ZeroRegion(map, sizeof(*map));
     map->type = (ComponentType)i;
     map->allocator = &world->allocator;
   }
 
   QueryResultHashMap* query_cache = &world->query_cache;
-  *query_cache = {};
+  Memory_ZeroRegion(query_cache, sizeof(*query_cache));
   query_cache->allocator = &world->allocator;
 
   InitializePlayer(world);

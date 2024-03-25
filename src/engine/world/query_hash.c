@@ -1,5 +1,7 @@
 #include <engine/world/query_hash.h>
 
+#include <common/bool.h>
+#include <common/macros.h>
 #include <engine/world/query.h>
 
 // TODO: a better hash definitely exists.
@@ -30,14 +32,14 @@ void QueryHash_Insert(
   int32_t index = QueryHash_Hash(&key);
 
   for (QueryResultHash* ptr = hash_map->table[index]; ptr != NULL; ptr = ptr->next) {
-    ASSERT(!Query_Equals(&key, &ptr->query));
+    ASSERT(!Query_Equals(&key, &ptr->key));
   }
 
   QueryResultHash* ptr = (QueryResultHash*) Allocator_AllocateBlock(
       hash_map->allocator, sizeof(QueryResultHash));
   ASSERT(ptr != NULL);
-  ptr->query = key;
-  ptr->result = value;
+  ptr->key = key;
+  ptr->value = value;
 
   ptr->next = hash_map->table[index];
   hash_map->table[index] = ptr;
@@ -48,8 +50,8 @@ QueryResult* QueryHash_Get(
     Query key) {
   int32_t index = QueryHash_Hash(&key);
   for (QueryResultHash* ptr = hash_map->table[index]; ptr != NULL; ptr = ptr->next) {
-    if (Query_Equals(&key, &ptr->query)) {
-      return &ptr->result;
+    if (Query_Equals(&key, &ptr->key)) {
+      return &ptr->value;
     }
   }
   return NULL;

@@ -1,5 +1,6 @@
 #include <engine/world/query.h>
 
+#include <common/macros.h>
 #include <engine/world/entity/component.h>
 #include <engine/world/entity/component_hash.h>
 #include <engine/world/world.h>

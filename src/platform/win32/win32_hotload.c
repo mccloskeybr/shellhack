@@ -1,20 +1,21 @@
-#include <platform/platform_hotload.h>
+#include <platform/platform.h>
 
 #include <common/status.h>
+#include <common/mem_util.h>
 #include <engine/render/render.h>
 #include <engine/input/input.h>
 #include <engine/sound/sound.h>
 #include <engine/memory/memory.h>
 #include <windows.h>
 
-struct Platform_EngineLib {
+typedef struct Platform_EngineLib {
   char lib_file_path[256];
   char lib_lock_file_path[256];
   FILETIME lib_write_time;
 
   HMODULE lib;
   EngineUpdateFn* update_fn;
-};
+} Platform_EngineLib;
 
 static const uint32_t N_LOCK_RETRY = 30;
 static const uint32_t LOCK_WAIT_MS = 10;
@@ -88,7 +89,8 @@ Win32_ReleaseEngineLib(Platform_EngineLib* engine_lib) {
   FreeLibrary(engine_lib->lib);
   engine_lib->lib = NULL;
   engine_lib->update_fn = NULL;
-  engine_lib->lib_write_time = {};
+  Memory_ZeroRegion(&engine_lib->lib_write_time,
+                    sizeof(engine_lib->lib_write_time));
 
   return OK;
 }
@@ -118,23 +120,23 @@ Platform_CreateEngineLib(
 
   char* ext_ptr = lib_file_path;
   while (*ext_ptr != '.') { ext_ptr++; }
-  const int32_t ext_idx = ext_ptr - lib_file_path;
+  const int32_t ext_idx = (int32_t)(ext_ptr - lib_file_path);
 
   char lib_stem[MAX_PATH];
-  strncpy_s(lib_stem, lib_file_path, ext_idx);
+  strncpy_s(lib_stem, MAX_PATH, lib_file_path, ext_idx);
 
   char lib_ext[MAX_PATH];
-  strcpy_s(lib_ext, ext_ptr);
+  strcpy_s(lib_ext, MAX_PATH, ext_ptr);
 
   const char* const locked_suffix = "_LOCKED";
 
   char lib_lock_file_path[MAX_PATH] = {'\0'};
-  strcat_s(lib_lock_file_path, lib_stem);
-  strcat_s(lib_lock_file_path, locked_suffix);
-  strcat_s(lib_lock_file_path, lib_ext);
+  strcat_s(lib_lock_file_path, MAX_PATH, lib_stem);
+  strcat_s(lib_lock_file_path, MAX_PATH, locked_suffix);
+  strcat_s(lib_lock_file_path, MAX_PATH, lib_ext);
 
-  strcpy_s((*engine_lib)->lib_file_path, lib_file_path);
-  strcpy_s((*engine_lib)->lib_lock_file_path, lib_lock_file_path);
+  strcpy_s((*engine_lib)->lib_file_path, MAX_PATH, lib_file_path);
+  strcpy_s((*engine_lib)->lib_lock_file_path, MAX_PATH, lib_lock_file_path);
 
   RETURN_IF_ERROR(Win32_LoadEngineLib(*engine_lib));
   return OK;

@@ -1,16 +1,18 @@
 #ifndef ENGINE_INPUT
 #define ENGINE_INPUT
 
-struct Stick {
+#include <common/bool.h>
+
+typedef struct Stick {
   float x;
   float y;
-};
+} Stick;
 
-struct Button {
+typedef struct Button {
   bool is_pressed;
-};
+} Button;
 
-struct Controller {
+typedef struct Controller {
   bool is_connected;
 
   Stick stick;
@@ -27,10 +29,10 @@ struct Controller {
 
   Button start;
   Button back;
-};
+} Controller;
 
-struct Input {
+typedef struct Input {
   Controller controllers[4];
-};
+} Input;
 
 #endif

@@ -2,6 +2,7 @@
 
 #include <common/status.h>
 #include <common/macros.h>
+#include <common/mem_util.h>
 #include <engine/memory/allocator.h>
 #include <engine/world/entity/entity.h>
 #include <engine/world/entity/component.h>
@@ -63,7 +64,7 @@ Component* ComponentHash_Get(
 ComponentHash* CHM_IterFirst(
     CHM_Iter* iter,
     ComponentHashMap* hash_map) {
-  *iter = {};
+  Memory_ZeroRegion(iter, sizeof(*iter));
   iter->hash_map = hash_map;
   return CHM_IterNext(iter);
 }

@@ -1,4 +1,4 @@
-#include <platform/platform_sound.h>
+#include <platform/platform.h>
 
 #include <common/log.h>
 #include <common/status.h>
@@ -10,7 +10,7 @@
 #define DIRECT_SOUND_CREATE(name) HRESULT WINAPI name(LPCGUID pcGuidDevice, LPDIRECTSOUND *ppDS, LPUNKNOWN pUnkOuter)
 typedef DIRECT_SOUND_CREATE(DirectSoundCreateFn);
 
-struct Platform_SoundDevice {
+typedef struct Platform_SoundDevice {
   int32_t samples_per_second;
   int32_t bytes_per_sample;
 
@@ -18,7 +18,7 @@ struct Platform_SoundDevice {
   int32_t sound_buffer_sample_size;
 
   DWORD sample_fill_cursor;
-};
+} Platform_SoundDevice;
 
 static const int32_t TOLERANCE = 4800;
 
@@ -57,7 +57,8 @@ Win32_InitDirectSound(
   }
 
   const HWND window = FindWindowA("GameWindowClass", 0);
-  if (!SUCCEEDED((*direct_sound)->SetCooperativeLevel(window, DSSCL_PRIORITY))) {
+  if (!SUCCEEDED((*direct_sound)->lpVtbl->SetCooperativeLevel(
+          *direct_sound, window, DSSCL_PRIORITY))) {
     // log
     return INTERNAL;
   }
@@ -75,13 +76,14 @@ Win32_FormatPrimarySoundBuffer(
   description.dwFlags = DSBCAPS_PRIMARYBUFFER;
 
   LPDIRECTSOUNDBUFFER buffer;
-  if (!SUCCEEDED((*direct_sound)->CreateSoundBuffer(&description, &buffer, 0))) {
+  if (!SUCCEEDED((*direct_sound)->lpVtbl->CreateSoundBuffer(
+          *direct_sound, &description, &buffer, 0))) {
     // log
     return INTERNAL;
   }
 
   WAVEFORMATEX format = Win32_GetWaveFormat(samples_per_second);
-  if (!SUCCEEDED(buffer->SetFormat(&format))) {
+  if (!SUCCEEDED(buffer->lpVtbl->SetFormat(buffer, &format))) {
     // log
     return INTERNAL;
   }
@@ -105,7 +107,8 @@ Win32_InitSecondarySoundBuffer(
   description.dwBufferBytes = sound_buffer_sample_size * bytes_per_sample;
   description.lpwfxFormat = &format;
 
-  if (!SUCCEEDED((*direct_sound)->CreateSoundBuffer(&description, secondary_buffer, 0))) {
+  if (!SUCCEEDED((*direct_sound)->lpVtbl->CreateSoundBuffer(
+          *direct_sound, &description, secondary_buffer, 0))) {
     // log
     return INTERNAL;
   }
@@ -121,7 +124,9 @@ Win32_ClearSoundBuffer(LPDIRECTSOUNDBUFFER* buffer) {
   VOID* region_2;
   DWORD region_2_size;
 
-  HRESULT result = (*buffer)->Lock(0, 0,
+  HRESULT result = (*buffer)->lpVtbl->Lock(
+      *buffer,
+      0, 0,
       &region_1, &region_1_size,
       &region_2, &region_2_size,
       DSBLOCK_ENTIREBUFFER);
@@ -141,7 +146,8 @@ Win32_ClearSoundBuffer(LPDIRECTSOUNDBUFFER* buffer) {
     *sample++ = 0;
   }
 
-  (*buffer)->Unlock(region_1, region_1_size, region_2, region_2_size);
+  (*buffer)->lpVtbl->Unlock(
+      *buffer, region_1, region_1_size, region_2, region_2_size);
   return OK;
 }
 
@@ -167,7 +173,8 @@ Win32_TryFillSoundBuffer(
 
   DWORD play_cursor_unsigned;
   DWORD write_cursor_unsigned;
-  if(!SUCCEEDED((*sound_buffer)->GetCurrentPosition(
+  if(!SUCCEEDED((*sound_buffer)->lpVtbl->GetCurrentPosition(
+          *sound_buffer,
           &play_cursor_unsigned,
           &write_cursor_unsigned))) {
     LOG_ERROR("Unable to get sample cursor positions!");
@@ -204,7 +211,9 @@ Win32_TryFillSoundBuffer(
   DWORD region_1_size;
   VOID* region_2;
   DWORD region_2_size;
-  if(SUCCEEDED((*sound_buffer)->Lock(start_cursor, sample_buffer_byte_size,
+  if(SUCCEEDED((*sound_buffer)->lpVtbl->Lock(
+          *sound_buffer,
+          start_cursor, sample_buffer_byte_size,
           &region_1, &region_1_size,
           &region_2, &region_2_size,
           0))) {
@@ -230,7 +239,8 @@ Win32_TryFillSoundBuffer(
       *sample_fill_cursor %= sound_buffer_byte_size;
     }
 
-    (*sound_buffer)->Unlock(region_1, region_1_size, region_2, region_2_size);
+    (*sound_buffer)->lpVtbl->Unlock(
+        *sound_buffer, region_1, region_1_size, region_2, region_2_size);
     return OK;
   } else {
     LOG_ERROR("Could not retrieve lock on sound buffer!");
@@ -258,7 +268,8 @@ Platform_CreateSoundDevice(
         bytes_per_sample,
         &secondary_buffer,
         sound_buffer_sample_size));
-  if (!SUCCEEDED(secondary_buffer->Play(0, 0, DSBPLAY_LOOPING))) {
+  if (!SUCCEEDED(secondary_buffer->lpVtbl->Play(
+          secondary_buffer, 0, 0, DSBPLAY_LOOPING))) {
     return INTERNAL;
   }
 

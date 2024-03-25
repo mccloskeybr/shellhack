@@ -1,4 +1,4 @@
-#include <platform/platform_os.h>
+#include <platform/platform.h>
 
 #include <common/status.h>
 #include <common/macros.h>

@@ -3,25 +3,21 @@
 #include <common/log.h>
 #include <common/status.h>
 #include <common/macros.h>
+#include <common/mem_util.h>
 #include <engine/render/render.h>
 #include <engine/input/input.h>
 #include <engine/sound/sound.h>
 #include <engine/memory/memory.h>
-#include <platform/platform_os.h>
-#include <platform/platform_sound.h>
-#include <platform/platform_input.h>
-#include <platform/platform_graphics.h>
-#include <platform/platform_stopwatch.h>
-#include <platform/platform_hotload.h>
+#include <platform/platform.h>
 #include <math.h>
 
-#define NULL 0
+#include <windows.h>
+#include <gl/gl.h>
 
 static bool global_running;
 
-static Status
-InitializeMemory(Memory* memory) {
-  *memory = {};
+static Status InitializeMemory(Memory* memory) {
+  Memory_ZeroRegion(memory, sizeof(*memory));
   memory->permanent_storage_capacity = MEGABYTES(256);
   memory->transient_storage_capacity = GIGABYTES(1);
 
@@ -36,38 +32,16 @@ InitializeMemory(Memory* memory) {
   return OK;
 }
 
-static Status
-InitializeInput(
-    Platform_InputDevice** input_device,
+static Status InitializeInput(
+    struct Platform_InputDevice** input_device,
     Input* input) {
-
   RETURN_IF_ERROR(Platform_CreateInputDevice(input_device));
   return OK;
 }
 
-static Status
-InitializeGraphics(
-    Platform_Window** window,
-    PixelBuffer* pixel_buffer) {
-
-  RETURN_IF_ERROR(Platform_CreateWindow(window));
-
-  pixel_buffer->width = 1280;
-  pixel_buffer->height = 720;
-  void* block;
-  RETURN_IF_ERROR(Platform_InitializeMemory(
-        &block,
-        pixel_buffer->width * pixel_buffer->height * sizeof(Pixel)));
-  pixel_buffer->buffer = (Pixel*)block;
-
-  return OK;
-}
-
-static Status
-InitializeAudio(
-    Platform_SoundDevice** sound_device,
+static Status InitializeAudio(
+    struct Platform_SoundDevice** sound_device,
     SoundSampleBuffer* sound_sample_buffer) {
-
   RETURN_IF_ERROR(Platform_CreateSoundDevice(
         sound_device,
         48000,
@@ -87,7 +61,7 @@ InitializeAudio(
 
 void Platform_Main() {
   // TODO: relative, platform-agnostic filepath
-  Platform_EngineLib* engine_lib;
+  struct Platform_EngineLib* engine_lib;
   ASSERT_OK(Platform_CreateEngineLib(
         "Z:\\shellhack\\build\\engine\\Debug\\engine.dll",
         &engine_lib));
@@ -95,19 +69,18 @@ void Platform_Main() {
   Memory memory;
   ASSERT_OK(InitializeMemory(&memory));
 
-  Platform_InputDevice* input_device;
+  struct Platform_InputDevice* input_device;
   Input input;
   ASSERT_OK(InitializeInput(&input_device, &input));
 
-  Platform_Window* window;
-  PixelBuffer pixel_buffer;
-  ASSERT_OK(InitializeGraphics(&window, &pixel_buffer));
+  struct Platform_Graphics* graphics;
+  ASSERT_OK(Platform_InitializeGraphics(&graphics));
 
-  Platform_SoundDevice* sound_device;
+  struct Platform_SoundDevice* sound_device;
   SoundSampleBuffer sound_sample_buffer;
   ASSERT_OK(InitializeAudio(&sound_device, &sound_sample_buffer));
 
-  Platform_Stopwatch* frame_stopwatch;
+  struct Platform_Stopwatch* frame_stopwatch;
   ASSERT_OK(Platform_CreateStopwatch(&frame_stopwatch));
   const float game_update_hz = (Platform_GetMonitorRefreshRate() / 2.0f);
   const float target_seconds_per_frame = 1.0f / game_update_hz;
@@ -122,6 +95,7 @@ void Platform_Main() {
         input_device,
         &input);
 
+    /*
     // TODO: better error handling?
     ASSERT_OK((GetEngineUpdateFn(engine_lib))(
           dt_s,
@@ -129,12 +103,20 @@ void Platform_Main() {
           &input,
           &pixel_buffer,
           &sound_sample_buffer));
+    */
+
+    glBegin(GL_TRIANGLES);
+    glColor3f(1.0f, 0.0f, 0.0f);
+    glVertex2f(-0.5f, -0.5f);
+    glVertex2f(+0.5f, -0.5f);
+    glVertex2f(+0.0f, +0.5f);
+    glEnd();
 
     // TODO: error handling?
     Platform_TryFillSoundBuffer(
         &sound_sample_buffer,
         sound_device);
-    Platform_RenderBuffer(window, &pixel_buffer);
+    Platform_SwapBuffer(graphics);
 
     Platform_UpdateStopwatch(&frame_stopwatch);
     float frame_seconds = Platform_SecondsElapsed(frame_stopwatch);

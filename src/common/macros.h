@@ -8,6 +8,4 @@
 
 #define ARRAY_SIZE(array) (sizeof(array) / sizeof((array)[0]))
 
-#define NULL 0
-
 #endif

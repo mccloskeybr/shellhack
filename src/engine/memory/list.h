@@ -30,13 +30,13 @@
   List_Remove(list, i)
 
 
-struct List {
+typedef struct List {
   void* arr;
   uint32_t size;
   uint32_t capacity;
   size_t elem_size;
   Allocator* allocator;
-};
+} List;
 
 List List_Create(
     Allocator* allocator,

@@ -1,4 +1,4 @@
-#include <platform/platform_input.h>
+#include <platform/platform.h>
 
 #include <common/macros.h>
 #include <common/status.h>
@@ -13,10 +13,10 @@ typedef X_INPUT_GET_STATE(XInputGetStateFn);
 #define X_INPUT_SET_STATE(name) DWORD WINAPI name(DWORD dwUserIndex, XINPUT_VIBRATION* pVibration);
 typedef X_INPUT_SET_STATE(XInputSetStateFn);
 
-struct Platform_InputDevice {
+typedef struct Platform_InputDevice {
   XInputGetStateFn* x_input_get_state_fn;
   XInputSetStateFn* x_input_set_state_fn;
-};
+} Platform_InputDevice;
 
 static inline Status
 GetXInputLibrary(HMODULE* lib) {

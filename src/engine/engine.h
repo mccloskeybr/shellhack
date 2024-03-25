@@ -3,6 +3,7 @@
 
 #include <engine_export.h>
 
+#include <common/bool.h>
 #include <common/v2.h>
 #include <common/status.h>
 #include <engine/render/render.h>
@@ -12,15 +13,15 @@
 #include <engine/memory/memory.h>
 #include <engine/world/world.h>
 
-struct GameState {
-  bool is_initialized = false;
+typedef struct GameState {
+  bool is_initialized;
 
   Camera camera;
   World world;
-};
+} GameState;
 
-extern "C" ENGINE_EXPORT Status
-Engine_Update(
+__declspec(dllexport)
+Status Engine_Update(
     float dt_s,
     Memory* memory,
     Input* input,

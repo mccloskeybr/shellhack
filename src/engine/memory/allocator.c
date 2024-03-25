@@ -16,7 +16,7 @@ static void Allocator_ZeroRegion(
 Status Allocator_Init(
     Allocator* allocator,
     Arena arena) {
-  *allocator = {};
+  // *allocator = {};
   allocator->arena = arena;
   allocator->sentinel.next = &allocator->sentinel;
   allocator->sentinel.prev = &allocator->sentinel;
@@ -24,7 +24,7 @@ Status Allocator_Init(
   MemBlockHeader* block = (MemBlockHeader*) Arena_PushSize(
       &allocator->arena, allocator->arena.capacity);
   if (block == NULL) { return RESOURCE_EXHAUSTED; }
-  *block = {};
+  // *block = {};
   block->block_size = allocator->arena.capacity - sizeof(MemBlockHeader);
   block->used = false;
 
@@ -91,14 +91,14 @@ void Allocator_FreeBlock(
     header->prev->next = header->next;
     header->next->prev = header->prev;
     header = header->prev;
-    *to_clear = {};
+    // *to_clear = {};
   }
   if (header->next != &allocator->sentinel && !header->next->used) {
     MemBlockHeader* to_clear = header->next;
     header->block_size += sizeof(MemBlockHeader) + header->next->block_size;
     header->next = header->next->next;
     header->next->prev = header;
-    *to_clear = {};
+    // *to_clear = {};
   }
 }
 

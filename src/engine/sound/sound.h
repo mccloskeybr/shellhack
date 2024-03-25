@@ -3,14 +3,14 @@
 
 #include <inttypes.h>
 
-struct SoundSample {
+typedef struct SoundSample {
   int16_t l;
   int16_t r;
-};
+} SoundSample;
 
-struct SoundSampleBuffer {
+typedef struct SoundSampleBuffer {
   SoundSample* buffer;
   int32_t buffer_size;
-};
+} SoundSampleBuffer;
 
 #endif

@@ -5,7 +5,7 @@
 #include <inttypes.h>
 
 // must be initialized to 0.
-struct Memory {
+typedef struct Memory {
   void* permanent_storage;
   uint64_t permanent_storage_capacity;
   uint64_t permanent_storage_size;
@@ -13,13 +13,13 @@ struct Memory {
   void* transient_storage;
   uint64_t transient_storage_capacity;
   uint64_t transient_storage_size;
-};
+} Memory;
 
-struct Arena {
+typedef struct Arena {
   void* memory;
   size_t capacity;
   size_t size;
-};
+} Arena;
 
 Status Memory_InitializePermArena(
     Arena* arena,

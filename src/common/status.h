@@ -29,12 +29,12 @@
 // TODO: come up with custom error codes.
 // shouldn't have to be restricted to RPC codes.
 // could try looking up other error code sets.
-enum Status {
+typedef enum Status {
 	OK,
 	INVALID_ARGUMENT,
 	FAILED_PRECONDITION,
 	RESOURCE_EXHAUSTED,
 	INTERNAL
-};
+} Status;
 
 #endif

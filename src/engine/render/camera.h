@@ -5,9 +5,9 @@
 #include <engine/shapes/rectangle.h>
 
 // TODO: scaling? etcetera?
-struct Camera {
-  Rectangle viewport;
-};
+typedef struct Camera {
+  Shape_Rect viewport;
+} Camera;
 
 inline V2 WorldPosToCameraRelative(const Camera* const camera, V2 pos) {
   UNREACHABLE;

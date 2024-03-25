@@ -4,7 +4,7 @@
 // TODO: intrinsics
 #include <math.h>
 
-union V2 {
+typedef union V2 {
   struct {
     float x;
     float y;
@@ -14,24 +14,47 @@ union V2 {
     float v;
   };
   float e[2];
-};
+} V2;
 
-inline V2 operator*(float c, V2 v) { return {c*v.x, c*v.y}; }
-inline V2 operator*(V2 v, float c) { return c*v; }
-inline V2& operator*=(V2& v, float c) { v = c*v; return v; }
+inline V2 V2_ScalarMult(float c, V2 v) {
+  V2 result;
+  result.x = c * v.x;
+  result.y = c * v.y;
+  return result;
+}
 
-inline V2 operator+(V2 a, V2 b) { return {a.x + b.x, a.y + b.y}; }
-inline V2& operator+=(V2& a, V2 b) { a = a + b; return a; }
+inline V2 V2_Add(V2 a, V2 b) {
+  V2 result;
+  result.x = a.x + b.x;
+  result.y = a.y + b.y;
+  return result;
+}
 
-inline V2 operator-(V2 a, V2 b) { return {a.x - b.x, a.y - b.y}; }
-inline V2& operator-=(V2& a, V2 b) { a = a - b; return a; }
+inline V2 V2_Sub(V2 a, V2 b) {
+  V2 result;
+  result.x = a.x - b.x;
+  result.y = a.y - b.y;
+  return result;
+}
 
-inline float Inner(V2 a, V2 b) { return a.x * b.x + a.y * b.y; }
-inline float Dot(V2 a, V2 b) { return Inner(a, b); }
+inline float V2_Inner(V2 a, V2 b) {
+  return a.x * b.x + a.y * b.y;
+}
 
-inline float LengthSq(V2 a) { return Dot(a, a); }
-inline float Length(V2 a) { return sqrtf(LengthSq(a)); }
+inline float V2_Dot(V2 a, V2 b) {
+  return V2_Inner(a, b);
+}
 
-inline V2 Normalize(V2 a) { return a * (1.0f / Length(a)); }
+inline float V2_LengthSq(V2 a) {
+  return V2_Dot(a, a);
+}
+
+inline float V2_Length(V2 a) {
+  return sqrtf(V2_LengthSq(a));
+}
+
+inline V2 V2_Normalize(V2 a) {
+  return V2_ScalarMult(1.0f / V2_Length(a), a);
+}
 
 #endif

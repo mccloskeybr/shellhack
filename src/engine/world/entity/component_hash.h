@@ -5,23 +5,23 @@
 #include <engine/world/entity/entity.h>
 #include <engine/world/entity/component.h>
 
-struct ComponentHash {
+typedef struct ComponentHash {
   EntityId key;
   Component value;
-  ComponentHash* next;
-};
+  struct ComponentHash* next;
+} ComponentHash;
 
-struct ComponentHashMap {
+typedef struct ComponentHashMap {
   ComponentType type;
   ComponentHash* table[256];
   Allocator* allocator;
-};
+} ComponentHashMap;
 
-struct CHM_Iter {
+typedef struct CHM_Iter {
   int32_t index;
   ComponentHash* ptr;
   ComponentHashMap* hash_map;
-};
+} CHM_Iter;
 
 void ComponentHash_Insert(
     ComponentHashMap* hash_map,

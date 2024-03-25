@@ -7,22 +7,22 @@
 
 #define TERM_MAX 10
 
-typedef struct World World;
-
-struct Query {
+// TODO: if component 0 is undefined, we can use tricks to get around
+// storing sizes.
+typedef struct Query {
   ComponentType with[TERM_MAX];
   uint32_t with_size;
 
   ComponentType without[TERM_MAX];
   uint32_t without_size;
-};
+} Query;
 
-struct QueryResult {
+typedef struct QueryResult {
   List entities;
-};
+} QueryResult;
 
 QueryResult Query_Execute(
-    World* world,
+    struct World* world,
     Query query);
 
 #endif

@@ -8,10 +8,10 @@
 #define LOG_INFO(fmt, ...) LOG(LOG_INFO, fmt, ##__VA_ARGS__);
 #define LOG_ERROR(fmt, ...) LOG(LOG_ERROR, fmt, ##__VA_ARGS__);
 
-enum LogLevel {
+typedef enum LogLevel {
   LOG_INFO,
   LOG_ERROR
-};
+} LogLevel;
 
 void Log_OutputMsg(
     const LogLevel level,

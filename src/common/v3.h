@@ -1,7 +1,7 @@
 #ifndef COMMON_V3
 #define COMMON_V3
 
-union V3 {
+typedef union V3 {
   struct {
     float x;
     float y;
@@ -13,6 +13,6 @@ union V3 {
     float b;
   };
   float e[3];
-};
+} V3;
 
 #endif

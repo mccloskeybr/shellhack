@@ -3,19 +3,18 @@
 
 #include <engine/render/camera.h>
 #include <engine/render/color.h>
-#include <engine/world/world.h>
 #include <engine/world/entity/entity.h>
 #include <inttypes.h>
 
-struct Pixel {
+typedef struct Pixel {
   Color color;
-};
+} Pixel;
 
-struct PixelBuffer {
+typedef struct PixelBuffer {
   Pixel* buffer;
   int32_t width;
   int32_t height;
-};
+} PixelBuffer;
 
 void Render_FlushScreen(
     PixelBuffer* pixel_buffer,
@@ -24,6 +23,6 @@ void Render_FlushScreen(
 void Render_DrawEntitiesAroundCamera(
     PixelBuffer* pixel_buffer,
     const Camera* const camera,
-    World* world);
+    struct World* world);
 
 #endif

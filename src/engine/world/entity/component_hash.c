@@ -2,7 +2,6 @@
 
 #include <common/status.h>
 #include <common/macros.h>
-#include <common/mem_util.h>
 #include <engine/memory/allocator.h>
 #include <engine/world/entity/entity.h>
 #include <engine/world/entity/component.h>
@@ -35,9 +34,7 @@ void ComponentHash_Insert(
   hash_map->table[index] = ptr;
 }
 
-void ComponentHash_Remove(
-    ComponentHashMap* hash_map,
-    EntityId key) {
+void ComponentHash_Remove(ComponentHashMap* hash_map, EntityId key) {
   int32_t index = ComponentHash_Hash(hash_map, key);
   for (ComponentHash* ptr = hash_map->table[index]; ptr != NULL; ptr = ptr->next) {
     if (ptr->next != NULL && ptr->next->key == key) {
@@ -49,9 +46,7 @@ void ComponentHash_Remove(
   }
 }
 
-Component* ComponentHash_Get(
-    ComponentHashMap* hash_map,
-    EntityId key) {
+Component* ComponentHash_Get(ComponentHashMap* hash_map, EntityId key) {
   int32_t index = ComponentHash_Hash(hash_map, key);
   for (ComponentHash* ptr = hash_map->table[index]; ptr != NULL; ptr = ptr->next) {
     if (ptr->key == key) {
@@ -61,16 +56,13 @@ Component* ComponentHash_Get(
   return NULL;
 }
 
-ComponentHash* CHM_IterFirst(
-    CHM_Iter* iter,
-    ComponentHashMap* hash_map) {
-  Memory_ZeroRegion(iter, sizeof(*iter));
+ComponentHash* CHM_IterFirst(CHM_Iter* iter, ComponentHashMap* hash_map) {
+  *iter = (CHM_Iter){};
   iter->hash_map = hash_map;
   return CHM_IterNext(iter);
 }
 
-ComponentHash* CHM_IterNext(
-    CHM_Iter* iter) {
+ComponentHash* CHM_IterNext(CHM_Iter* iter) {
   if (iter->ptr != NULL) {
     iter->ptr = iter->ptr->next;
     if (iter->ptr != NULL) {
@@ -91,7 +83,6 @@ ComponentHash* CHM_IterNext(
   return NULL;
 }
 
-bool CHM_IterDone(
-    CHM_Iter* iter) {
+bool CHM_IterDone(CHM_Iter* iter) {
   return iter->ptr == NULL;
 }

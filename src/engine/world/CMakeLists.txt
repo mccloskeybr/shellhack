@@ -8,7 +8,6 @@ target_link_libraries(world PRIVATE
   list
   log
   memory
-  mem_util
   query_hash
   query
 )

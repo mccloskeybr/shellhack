@@ -25,7 +25,7 @@ typedef struct Resources {
   Input* input;
 } Resources;
 
-void World_Initialize(World* world, Memory* memory);
+void World_Initialize(World* world, Arena world_arena);
 void World_Update(
     World* world, const Resources* const resources, Memory* memory);
 QueryResult* World_Query(World* world, Query query);

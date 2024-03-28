@@ -1,7 +1,6 @@
 #include <engine/render/render.h>
 
 #include <common/macros.h>
-#include <common/mem_util.h>
 #include <engine/render/camera.h>
 #include <engine/render/gizmos.h>
 #include <engine/world/entity/component.h>
@@ -25,8 +24,7 @@ void Render_DrawEntitiesAroundCamera(
     const Camera* const camera,
     struct World* world) {
 
-  Query spatial_query;
-  Memory_ZeroRegion(&spatial_query, sizeof(spatial_query));
+  Query spatial_query = {};
   spatial_query.with[TERM_MAX] = (ComponentType){COMPONENT_TYPE_SPATIAL};
   spatial_query.with_size = 1;
   QueryResult* spatial_query_results = World_Query(world, spatial_query);

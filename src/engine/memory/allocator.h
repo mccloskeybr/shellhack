@@ -18,16 +18,8 @@ typedef struct Allocator {
   MemBlockHeader sentinel;
 } Allocator;
 
-Status Allocator_Init(
-    Allocator* allocator,
-    Arena arena);
-
-void* Allocator_AllocateBlock(
-    Allocator* allocator,
-    size_t block_size);
-
-void Allocator_FreeBlock(
-    Allocator* allocator,
-    void* block);
+Status Allocator_Init(Allocator* allocator, Arena arena);
+void* Allocator_AllocateBlock(Allocator* allocator, size_t block_size);
+void Allocator_FreeBlock(Allocator* allocator, void* block);
 
 #endif

@@ -79,7 +79,8 @@ void Allocator_FreeBlock(
     Allocator* allocator,
     void* block) {
   ASSERT(allocator != NULL);
-  ASSERT(block != NULL);
+
+  if (block == NULL) { return; }
 
   MemBlockHeader* header = (MemBlockHeader*)((uint8_t*)block - sizeof(MemBlockHeader));
   Allocator_ZeroRegion(block, header->block_size);

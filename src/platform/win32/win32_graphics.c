@@ -1,7 +1,6 @@
 #include <platform/platform.h>
 
 #include <common/log.h>
-#include <common/mem_util.h>
 #include <common/status.h>
 #include <engine/render/render.h>
 #include <platform/platform_runner.h>
@@ -31,7 +30,7 @@ static Status Win32_CreateOpenGLAPI(Win32_OpenGLAPI* api, HDC window_dc) {
   if (open_gl_rc == NULL) { return INTERNAL; }
   if (!wglMakeCurrent(window_dc, open_gl_rc)) { return INTERNAL; }
 
-  Memory_ZeroRegion(api, sizeof(*api));
+  *api = (Win32_OpenGLAPI){};
   api->wgl_create_context_attribs_arb_func =
     (WglCreateContextAttribsArbFunc*) wglGetProcAddress("wglCreateContextAttribsARB");
 
@@ -40,8 +39,7 @@ static Status Win32_CreateOpenGLAPI(Win32_OpenGLAPI* api, HDC window_dc) {
 }
 
 static void Win32_SetPixelFormat(HDC window_dc) {
-  PIXELFORMATDESCRIPTOR desired_pixel_format;
-  Memory_ZeroRegion(&desired_pixel_format, sizeof(desired_pixel_format));
+  PIXELFORMATDESCRIPTOR desired_pixel_format = {};
   desired_pixel_format.nSize = sizeof(desired_pixel_format);
   desired_pixel_format.nVersion = 1;
   desired_pixel_format.iPixelType = PFD_TYPE_RGBA;
@@ -123,8 +121,7 @@ LRESULT CALLBACK Win32_MainWindowCallback(
 static Status Win32_CreateWindow(HWND* window) {
   HMODULE instance = GetModuleHandle(NULL);
 
-  WNDCLASSA window_class;
-  Memory_ZeroRegion(&window_class, sizeof(window_class));
+  WNDCLASSA window_class = {};
   window_class.style = CS_HREDRAW|CS_VREDRAW|CS_OWNDC;
   window_class.lpfnWndProc = Win32_MainWindowCallback;
   window_class.hInstance = instance;

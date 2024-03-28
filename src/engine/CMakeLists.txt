@@ -5,11 +5,12 @@ add_subdirectory(world)
 
 add_library(engine SHARED engine.h engine.c)
 target_link_libraries(engine PRIVATE
-	platform_runner
-	world
-	render
+  asset_server
 	gizmos
 	log
+	platform_runner
+	render
+	world
 )
 
 generate_export_header(engine

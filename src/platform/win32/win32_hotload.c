@@ -1,7 +1,6 @@
 #include <platform/platform.h>
 
 #include <common/status.h>
-#include <common/mem_util.h>
 #include <engine/render/render.h>
 #include <engine/input/input.h>
 #include <engine/sound/sound.h>
@@ -20,10 +19,8 @@ typedef struct Platform_EngineLib {
 static const uint32_t N_LOCK_RETRY = 30;
 static const uint32_t LOCK_WAIT_MS = 10;
 
-static inline Status
-Win32_GetLastWriteTime(
-    char* file_path,
-    FILETIME* filetime) {
+static inline Status Win32_GetLastWriteTime(
+    char* file_path, FILETIME* filetime) {
   WIN32_FILE_ATTRIBUTE_DATA file_data;
   int retry = 0;
   if (!GetFileAttributesEx(
@@ -37,9 +34,7 @@ Win32_GetLastWriteTime(
   return OK;
 }
 
-
-static Status
-Win32_LoadEngineLib(Platform_EngineLib* engine_lib) {
+static Status Win32_LoadEngineLib(Platform_EngineLib* engine_lib) {
   if(engine_lib->lib != NULL) {
     return OK;
   }
@@ -79,8 +74,7 @@ Win32_LoadEngineLib(Platform_EngineLib* engine_lib) {
   return OK;
 }
 
-static Status
-Win32_ReleaseEngineLib(Platform_EngineLib* engine_lib) {
+static Status Win32_ReleaseEngineLib(Platform_EngineLib* engine_lib) {
   if (engine_lib->lib == NULL) {
     return OK;
   }
@@ -89,14 +83,12 @@ Win32_ReleaseEngineLib(Platform_EngineLib* engine_lib) {
   FreeLibrary(engine_lib->lib);
   engine_lib->lib = NULL;
   engine_lib->update_fn = NULL;
-  Memory_ZeroRegion(&engine_lib->lib_write_time,
-                    sizeof(engine_lib->lib_write_time));
+  engine_lib->lib_write_time = (FILETIME){};
 
   return OK;
 }
 
-Status
-Platform_MaybeReloadEngineLib(Platform_EngineLib* engine_lib) {
+Status Platform_MaybeReloadEngineLib(Platform_EngineLib* engine_lib) {
   FILETIME last_write_time;
   RETURN_IF_ERROR(Win32_GetLastWriteTime(engine_lib->lib_file_path, &last_write_time));
 
@@ -110,11 +102,8 @@ Platform_MaybeReloadEngineLib(Platform_EngineLib* engine_lib) {
 
 // TODO: allow lib_path to not be a full path.
 // TODO: remove reliance on MAX_PATH.
-Status
-Platform_CreateEngineLib(
-    char* lib_file_path,
-    Platform_EngineLib** engine_lib) {
-
+Status Platform_CreateEngineLib(
+    char* lib_file_path, Platform_EngineLib** engine_lib) {
   *engine_lib = (Platform_EngineLib*) calloc(1, sizeof(Platform_EngineLib));
   if (*engine_lib == NULL) { return RESOURCE_EXHAUSTED; }
 
@@ -142,7 +131,6 @@ Platform_CreateEngineLib(
   return OK;
 }
 
-EngineUpdateFn*
-GetEngineUpdateFn(Platform_EngineLib* engine_lib) {
+EngineUpdateFn* Platform_GetEngineUpdateFn(Platform_EngineLib* engine_lib) {
   return engine_lib->update_fn;
 }

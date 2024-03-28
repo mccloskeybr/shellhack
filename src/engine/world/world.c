@@ -2,7 +2,6 @@
 
 #include <common/log.h>
 #include <common/macros.h>
-#include <common/mem_util.h>
 #include <engine/input/input.h>
 #include <engine/memory/memory.h>
 #include <engine/memory/allocator.h>
@@ -102,26 +101,20 @@ static void UpdatePlayerController(
   }
 }
 
-void World_Initialize(
-    World* world,
-    Memory* memory) {
-  Arena world_arena;
-  ASSERT_OK(Memory_InitializePermArena(
-        &world_arena, memory, MEGABYTES(64)));
-  ASSERT_OK(Allocator_Init(
-        &world->allocator, world_arena));
+void World_Initialize(World* world, Arena world_arena) {
+  *world = (World) {};
 
+  ASSERT_OK(Allocator_Init(&world->allocator, world_arena));
   world->entities = LIST_CREATE(&world->allocator, EntityId);
-
   for (int32_t i = 0; i < ARRAY_SIZE(world->component_maps); i++) {
     ComponentHashMap* map = &world->component_maps[i];
-    Memory_ZeroRegion(map, sizeof(*map));
+    *map = (ComponentHashMap){};
     map->type = (ComponentType)i;
     map->allocator = &world->allocator;
   }
 
   QueryResultHashMap* query_cache = &world->query_cache;
-  Memory_ZeroRegion(query_cache, sizeof(*query_cache));
+  *query_cache = (QueryResultHashMap){};
   query_cache->allocator = &world->allocator;
 
   InitializePlayer(world);

@@ -27,6 +27,8 @@ target_link_libraries(win32_os PRIVATE
 
 add_library(win32_stopwatch win32_stopwatch.c ../platform.h)
 
+add_library(win32_io win32_io.c ../platform.h)
+
 add_executable(win32_main WIN32 win32_main.c)
 target_link_libraries(win32_main PRIVATE
 	platform_runner

@@ -29,20 +29,34 @@ Status Platform_CreateSoundDevice(struct Platform_SoundDevice** device,
 Status Platform_TryFillSoundBuffer(const SoundSampleBuffer* const samples,
                                    struct Platform_SoundDevice* device);
 
-// Hotloading
+// File IO
+struct Platform_FileHandle;
+#define PLATFORM_FILE_OPEN(name) Status name( \
+  struct Platform_FileHandle** file_handle, char* path)
+#define PLATFORM_FILE_GET_SIZE(name) int32_t name( \
+  struct Platform_FileHandle* file_handle)
+#define PLATFORM_FILE_READ(name) Status name( \
+  struct Platform_FileHandle* file_handle, void* dest, int32_t size)
+#define PLATFORM_FILE_CLOSE(name) void name( \
+  struct Platform_FileHandle* file_handle)
+PLATFORM_FILE_OPEN(Platform_FileOpen);
+PLATFORM_FILE_GET_SIZE(Platform_FileGetSize);
+PLATFORM_FILE_READ(Platform_FileRead);
+PLATFORM_FILE_CLOSE(Platform_FileClose);
+
+// Engine hotload
+struct Platform_EngineLib;
 #define ENGINE_UPDATE(name) Status name(  \
+    struct PlatformAPI* platform_api,     \
     float dt_s,			                      \
     Memory* memory,   	                  \
     Input* input,			                    \
-    PixelBuffer* pixel_buffer,            \
-    SoundSampleBuffer* sound_buffer);
+    SoundSampleBuffer* sound_buffer)
 typedef ENGINE_UPDATE(EngineUpdateFn);
-
-struct Platform_EngineLib;
 Status Platform_CreateEngineLib(char* lib_file_path,
                                 struct Platform_EngineLib** engine_lib);
 Status Platform_MaybeReloadEngineLib(struct Platform_EngineLib* engine_lib);
-EngineUpdateFn* GetEngineUpdateFn(struct Platform_EngineLib* engine_lib);
+EngineUpdateFn* Platform_GetEngineUpdateFn(struct Platform_EngineLib* engine_lib);
 
 // Timing
 struct Platform_Stopwatch;
@@ -58,5 +72,17 @@ Status Platform_InitializeMemory(void** block, uint64_t size);
 void Platform_HandleEvents();
 float Platform_GetMonitorRefreshRate();
 void Platform_SleepMs(int32_t duration_s);
+
+// Vtable
+typedef PLATFORM_FILE_OPEN(Platform_FileOpen_Fn);
+typedef PLATFORM_FILE_GET_SIZE(Platform_FileGetSize_Fn);
+typedef PLATFORM_FILE_READ(Platform_FileRead_Fn);
+typedef PLATFORM_FILE_CLOSE(Platform_FileClose_Fn);
+typedef struct PlatformAPI {
+  Platform_FileOpen_Fn* file_open_fn;
+  Platform_FileGetSize_Fn* file_get_size_fn;
+  Platform_FileRead_Fn* file_read_fn;
+  Platform_FileClose_Fn* file_close_fn;
+} PlatformAPI;
 
 #endif

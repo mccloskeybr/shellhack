@@ -3,7 +3,6 @@
 #include <common/log.h>
 #include <common/status.h>
 #include <common/macros.h>
-#include <common/mem_util.h>
 #include <engine/render/render.h>
 #include <engine/input/input.h>
 #include <engine/sound/sound.h>
@@ -17,7 +16,7 @@
 static bool global_running;
 
 static Status InitializeMemory(Memory* memory) {
-  Memory_ZeroRegion(memory, sizeof(*memory));
+  *memory = (Memory){};
   memory->permanent_storage_capacity = MEGABYTES(256);
   memory->transient_storage_capacity = GIGABYTES(1);
 
@@ -59,6 +58,16 @@ static Status InitializeAudio(
   return OK;
 }
 
+PlatformAPI CreatePlatformAPI() {
+  PlatformAPI platform_api = {};
+  platform_api.file_open_fn = Platform_FileOpen;
+  platform_api.file_get_size_fn = Platform_FileGetSize;
+  platform_api.file_read_fn = Platform_FileRead;
+  platform_api.file_close_fn = Platform_FileClose;
+
+  return platform_api;
+}
+
 void Platform_Main() {
   // TODO: relative, platform-agnostic filepath
   struct Platform_EngineLib* engine_lib;
@@ -86,6 +95,8 @@ void Platform_Main() {
   const float target_seconds_per_frame = 1.0f / game_update_hz;
   float dt_s = 0.0f;
 
+  PlatformAPI platform_api = CreatePlatformAPI();
+
   global_running = true;
   while(global_running) {
     ASSERT_OK(Platform_MaybeReloadEngineLib(engine_lib));
@@ -95,15 +106,13 @@ void Platform_Main() {
         input_device,
         &input);
 
-    /*
     // TODO: better error handling?
-    ASSERT_OK((GetEngineUpdateFn(engine_lib))(
+    ASSERT_OK((Platform_GetEngineUpdateFn(engine_lib))(
+          &platform_api,
           dt_s,
           &memory,
           &input,
-          &pixel_buffer,
           &sound_sample_buffer));
-    */
 
     glBegin(GL_TRIANGLES);
     glColor3f(1.0f, 0.0f, 0.0f);
